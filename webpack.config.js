@@ -1,14 +1,25 @@
 var path = require('path');
 
+const isProduction = process.env.NODE_ENV === 'production';
+const isDevelopment = !isProduction;
+
 module.exports = {
     entry: './src/main/js/App.js',
-    devtool: 'source-map',
+	target: process.env.NODE_ENV === "development" ? "web" : "browserslist",
     cache: true,
     mode: 'development',
     output: {
         path: __dirname,
-        filename: './src/main/resources/static/built/bundle.js'
+        filename: './src/main/resources/static/built/bundle.js',
+		publicPath: './src/main/resources/static/built'
     },
+	devServer: {
+		static: {
+		  directory: path.resolve(__dirname, './src/main/resources/templates'),
+		},
+		hot: true,
+		port: 8080
+	},
     module: {
         rules: [
             {
