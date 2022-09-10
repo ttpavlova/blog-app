@@ -7,7 +7,7 @@ module.exports = {
     entry: './src/main/js/App.js',
 	target: process.env.NODE_ENV === "development" ? "web" : "browserslist",
     cache: true,
-    mode: 'development',
+    mode: isDevelopment ? 'development' : 'production',
     output: {
         path: path.resolve(__dirname, 'src/main/resources/static'),
         filename: 'bundle.js',
@@ -16,10 +16,11 @@ module.exports = {
 		static: {
 		  directory: path.resolve(__dirname, 'src/main/resources/static'),
 		},
-        
         hot: true,
 		port: 8080
 	},
+    target: 'web',
+    devtool: 'source-map',
     module: {
         rules: [
             {
