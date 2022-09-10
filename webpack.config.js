@@ -14,7 +14,7 @@ module.exports = {
     },
 	devServer: {
 		static: {
-		  directory: path.resolve(__dirname, '/main/resources/static'),
+		  directory: path.resolve(__dirname, 'src/main/resources/static'),
 		},
         
         hot: true,
