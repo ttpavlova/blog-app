@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve",
-    "watch": "webpack --watch -d --output ./target/classes/static/built/bundle.js",
-    "build": "cross-env NODE_ENV=production webpack --mode production"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
@@ -26,7 +27,6 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "cross-env": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",

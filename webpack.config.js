@@ -9,15 +9,15 @@ module.exports = {
     cache: true,
     mode: 'development',
     output: {
-        path: __dirname,
-        filename: './src/main/resources/static/built/bundle.js',
-		publicPath: './src/main/resources/static/built'
+        path: path.resolve(__dirname, 'src/main/resources/static'),
+        filename: 'bundle.js',
     },
 	devServer: {
 		static: {
-		  directory: path.resolve(__dirname, './src/main/resources/templates'),
+		  directory: path.resolve(__dirname, '/main/resources/static'),
 		},
-		hot: true,
+        
+        hot: true,
 		port: 8080
 	},
     module: {
