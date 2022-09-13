@@ -1,9 +1,12 @@
 import React from "react";
 
 function Employee(props) {
+
     return (
         <div>
-            <p>{props.value}</p>
+            <p>{props.id}</p>
+            <p>{props.name}</p>
+            <p>{props.role}</p>
         </div>
     );
 }

@@ -3,7 +3,12 @@ import { useState, useEffect } from "react";
 import Employee from "./Employee";
 
 function Home() {
-    const [employeeData, setEmployeeData] = useState(null);
+    const [employeeData, setEmployeeData] = useState([]);
+
+    const listEmployees = employeeData.map((employee) => (
+      <Employee id={employee.id} name={employee.name} role={employee.role} key={employee.id} />
+    ));
+    console.log(employeeData);
 
     // useEffect(() => {
     //     fetchData();
@@ -39,23 +44,14 @@ function Home() {
       }, []);
 
     if (!employeeData) {
-        return <div></div>;
+        return <div>Something is wrong with the data...</div>;
     }
-
-    const listEmployees = employeeData.map((employee) => {
-      <Employee value={employee.id} />
-    });
-
-    console.log(listEmployees);
 
     return (
         <div>
             <h1>Hi.</h1>
             <br/>
-            <ul>{listEmployees}</ul>
-            <p>{employeeData.id}</p>
-            <p>{employeeData.name}</p>
-            <p>{employeeData.role}</p>
+            <div>{listEmployees}</div>
         </div>
     );
 }
