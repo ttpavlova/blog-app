@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Employee from "./Employee";
 
 function Home() {
     const [employeeData, setEmployeeData] = useState(null);
@@ -21,7 +22,7 @@ function Home() {
     // }, []);
 
     useEffect(() => {
-        fetch("/api/employees/2")
+        fetch("/api/employees")
           .then(res => res.json())
           .then(
             (result) => {
@@ -41,10 +42,17 @@ function Home() {
         return <div></div>;
     }
 
+    const listEmployees = employeeData.map((employee) => {
+      <Employee value={employee.id} />
+    });
+
+    console.log(listEmployees);
+
     return (
         <div>
             <h1>Hi.</h1>
             <br/>
+            <ul>{listEmployees}</ul>
             <p>{employeeData.id}</p>
             <p>{employeeData.name}</p>
             <p>{employeeData.role}</p>
