@@ -17,7 +17,10 @@ module.exports = {
 		  directory: path.resolve(__dirname, 'src/main/resources/static'),
 		},
         hot: true,
-		port: 8080
+		port: 3000,
+        proxy: {
+            '/api': 'http://localhost:8080',
+        },
 	},
     target: 'web',
     devtool: 'source-map',
