@@ -17,6 +17,8 @@ function AddEmployeeForm(props) {
             },
             body: JSON.stringify(newEmployee),
         });
+
+        props.fetchData();
     }
 
     // function handleSubmit(e) {
