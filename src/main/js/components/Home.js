@@ -11,10 +11,33 @@ function Home() {
         id={employee.id}
         name={employee.name}
         role={employee.role}
+        editEmployee={editEmployee}
         deleteEmployee={deleteEmployee}
         key={employee.id}
       />
     ));
+
+    async function editEmployee(id, name, role) {
+      const updatedEmployee = { name, role };
+      console.log(updatedEmployee);
+
+      await fetch('/api/employees/' + id, {
+        method: "PUT",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedEmployee),
+    });
+
+      const updatedEmployeeList = employeeData.map((employee) => {
+        if (id === employee.id) {
+          return {...employee, name: name, role: role};
+        }
+        return employee;
+      });
+      setEmployeeData(updatedEmployeeList);
+    }
 
     async function deleteEmployee(id) {
       await fetch('/api/employees/' + id, {
@@ -73,7 +96,7 @@ function Home() {
             <h1>Hi.</h1>
             <AddEmployeeForm fetchData={fetchData} />
             <br/>
-            <div>{listEmployees}</div>
+            <ol>{listEmployees}</ol>
         </div>
     );
 }

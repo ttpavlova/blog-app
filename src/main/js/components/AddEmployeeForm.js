@@ -9,6 +9,7 @@ function AddEmployeeForm(props) {
         e.preventDefault();
         // alert("Hi");
         const newEmployee = { name, role };
+        
         await fetch('/api/employees', {
             method: "POST",
             headers: {
