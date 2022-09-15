@@ -19,14 +19,9 @@ function AddEmployeeForm(props) {
         });
 
         props.fetchData();
+        // setName("");
+        // setRole("");
     }
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-    //     props.addEmployee(name, role);
-    //     setName("");
-    //     setRole("");
-    // }
 
     function handleChangeName(e) {
         setName(e.target.value);

@@ -7,9 +7,26 @@ function Home() {
     const [employeeData, setEmployeeData] = useState([]);
 
     const listEmployees = employeeData.map((employee) => (
-      <Employee id={employee.id} name={employee.name} role={employee.role} key={employee.id} />
+      <Employee
+        id={employee.id}
+        name={employee.name}
+        role={employee.role}
+        deleteEmployee={deleteEmployee}
+        key={employee.id}
+      />
     ));
-    console.log(employeeData);
+
+    async function deleteEmployee(id) {
+      await fetch('/api/employees/' + id, {
+          method: "DELETE",
+          headers: {
+              "Accept": "application/json",
+              "Content-Type": "application/json"
+          }
+      });
+
+      fetchData();
+  }
 
     // function addEmployee(name, role) {
     //   // alert(name + ", " + role);
@@ -24,13 +41,10 @@ function Home() {
 
       const data = await res.json();
       setEmployeeData(data);
-      console.log(data);
-      console.log(employeeData);
-      // console.log(employeeData.id);
   }
 
     useEffect(() => {
-        fetchData();  
+        fetchData();
     }, []);
 
     // useEffect(() => {
@@ -57,7 +71,7 @@ function Home() {
     return (
         <div>
             <h1>Hi.</h1>
-            <AddEmployeeForm fetchData={fetchData} /*addEmployee={addEmployee}*/ />
+            <AddEmployeeForm fetchData={fetchData} />
             <br/>
             <div>{listEmployees}</div>
         </div>

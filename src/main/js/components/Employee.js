@@ -9,7 +9,13 @@ function Employee(props) {
             <p>{props.role}</p>
             <div className="btn-group">
                 <button type="button" className="btn">Edit</button>
-                <button type="button" className="btn">Delete</button>
+                <button
+                    type="button"
+                    className="btn"
+                    onClick={() => props.deleteEmployee(props.id)}
+                >
+                    Delete
+                </button>
             </div>
         </div>
     );
