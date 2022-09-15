@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import AddEmployeeForm from "./AddEmployeeForm";
 import Employee from "./Employee";
 
 function Home() {
@@ -9,6 +10,12 @@ function Home() {
       <Employee id={employee.id} name={employee.name} role={employee.role} key={employee.id} />
     ));
     console.log(employeeData);
+
+    // function addEmployee(name, role) {
+    //   // alert(name + ", " + role);
+    //   // const newEmployee = { name, role };
+    //   setEmployeeData([...employeeData, newEmployee]);
+    // }
 
     // useEffect(() => {
     //     fetchData();
@@ -50,6 +57,7 @@ function Home() {
     return (
         <div>
             <h1>Hi.</h1>
+            <AddEmployeeForm /*addEmployee={addEmployee}*/ />
             <br/>
             <div>{listEmployees}</div>
         </div>

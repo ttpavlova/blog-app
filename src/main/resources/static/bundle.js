@@ -526,7 +526,7 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
 
 
 function Employee(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.value));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.role));
 }
 
 _c = Employee;
@@ -591,10 +591,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Home() {
   _s2();
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       employeeData = _useState2[0],
-      setEmployeeData = _useState2[1]; // useEffect(() => {
+      setEmployeeData = _useState2[1];
+
+  var listEmployees = employeeData.map(function (employee) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Employee__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      id: employee.id,
+      name: employee.name,
+      role: employee.role,
+      key: employee.id
+    });
+  });
+  console.log(employeeData); // useEffect(() => {
   //     fetchData();
   //     async function fetchData() {
   //         const res = await fetch(
@@ -607,7 +617,6 @@ function Home() {
   //         // console.log(employeeData.id);
   //     }
   // }, []);
-
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     fetch("/api/employees").then(function (res) {
@@ -624,20 +633,13 @@ function Home() {
   }, []);
 
   if (!employeeData) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null);
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Something is wrong with the data...");
   }
 
-  var listEmployees = employeeData.map(function (employee) {
-    /*#__PURE__*/
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Employee__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      value: employee.id
-    });
-  });
-  console.log(listEmployees);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Hi."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", null, listEmployees), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, employeeData.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, employeeData.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, employeeData.role));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Hi."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, listEmployees));
 }
 
-_s2(Home, "8eOmVK6SexJEUV5TTYNjFI6TyLI=");
+_s2(Home, "qLl3hHdPp/w+pd3NQpst+BT4G4w=");
 
 _c = Home;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home);
