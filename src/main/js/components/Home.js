@@ -48,7 +48,8 @@ function Home() {
           }
       });
 
-      fetchData();
+      const updatedEmployeeList = employeeData.filter((employee) => id !== employee.id);
+      setEmployeeData(updatedEmployeeList);
   }
 
     // function addEmployee(name, role) {
