@@ -1,6 +1,7 @@
 package com.example.demo2rest.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +17,9 @@ public class User {
     private String password;
     /*private Integer id_authority;*/
     private Boolean enabled;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private List<Post> posts;
 
     // constructor
     User() {}

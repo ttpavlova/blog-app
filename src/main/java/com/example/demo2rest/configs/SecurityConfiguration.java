@@ -87,8 +87,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .roles("USER")
                 .build();
         JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-        users.createUser(admin);
-        users.createUser(user);
+        if (!users.userExists(admin.getUsername())) {
+            users.createUser(admin);
+        }
+        if(!users.userExists(user.getUsername())) {
+            users.createUser(user);
+        }
 
         return users;
     }

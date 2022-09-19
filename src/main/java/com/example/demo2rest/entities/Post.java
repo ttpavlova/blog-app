@@ -14,18 +14,21 @@ public class Post {
     private String name;
     private String text;
     private Date date;
-    private Integer id_user;
+
+    @ManyToOne
+    @JoinColumn(name = "username", nullable = false)
+    private User username;
 
     Post() {
 
     }
 
-    Post(String name, String text, Date date, Integer id_user) {
+    /*Post(String name, String text, Date date, Integer id_user) {
         this.name = name;
         this.text = text;
         this.date = date;
         this.id_user = id_user;
-    }
+    }*/
 
     public Integer getId_post() {
         return id_post;
@@ -59,11 +62,11 @@ public class Post {
         this.date = date;
     }
 
-    public Integer getId_user() {
-        return id_user;
+    public User getUser() {
+        return username;
     }
 
-    public void setId_user(Integer id_user) {
-        this.id_user = id_user;
+    public void setUser(User username) {
+        this.username = username;
     }
 }

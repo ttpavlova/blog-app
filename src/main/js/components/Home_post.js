@@ -8,10 +8,11 @@ function Home_post() {
 
     const listPosts = posts.map((post) => (
       <Post
-        id={post.id}
+        id={post.id_post}
         name={post.name}
         text={post.text}
         date={post.date}
+        username={post.user.username}
         editPost={editPost}
         deletePost={deletePost}
         key={post.id}

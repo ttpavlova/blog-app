@@ -53,6 +53,7 @@ function Post(props) {
             <p>{props.id}</p>
             <p>{props.name}</p>
             <p>{props.text}</p>
+            <p>{props.username}</p>
             <div className="btn-group">
                 <button
                     type="button"
