@@ -57,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     }
 
     // In-Memory
-    @Bean
+    /*@Bean
     public UserDetailsService users() {
         UserDetails admin = User.builder()
                 .username("admin")
@@ -71,10 +71,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .build();
 
         return new InMemoryUserDetailsManager(admin, user);
-    }
+    }*/
 
     // db authentication
-    /*@Bean
+    @Bean
     public JdbcUserDetailsManager users(DataSource dataSource) {
         UserDetails admin = User.builder()
                 .username("admin")
@@ -91,5 +91,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         users.createUser(user);
 
         return users;
-    }*/
+    }
 }

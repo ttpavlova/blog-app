@@ -6,32 +6,35 @@ import javax.persistence.*;
 @Table(name = "authorities")
 public class Authority {
 
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer id_authority;
-    private String name;
+    public Integer id_authority;*/
+    private String username;
+    @Id
+    private String authority;
 
     Authority() {
 
     }
 
-    Authority(String name) {
-        this.name = name;
+    Authority(String username, String authority) {
+        this.username = username;
+        this.authority = authority;
     }
 
-    public Integer getId_authority() {
-        return id_authority;
+    public String getUsername() {
+        return username;
     }
 
-    public void setId_authority(Integer id_authority) {
-        this.id_authority = id_authority;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getName() {
-        return name;
+    public String getAuthority() {
+        return authority;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAuthority(String authority) {
+        this.authority = authority;
     }
 }

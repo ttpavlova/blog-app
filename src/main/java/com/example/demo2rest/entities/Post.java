@@ -2,6 +2,7 @@ package com.example.demo2rest.entities;
 
 import javax.persistence.*;
 import java.text.DateFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "posts")
@@ -12,14 +13,14 @@ public class Post {
     private Integer id_post;
     private String name;
     private String text;
-    private DateFormat date;
+    private Date date;
     private Integer id_user;
 
     Post() {
 
     }
 
-    Post(String name, String text, DateFormat date, Integer id_user) {
+    Post(String name, String text, Date date, Integer id_user) {
         this.name = name;
         this.text = text;
         this.date = date;
@@ -50,11 +51,11 @@ public class Post {
         this.text = text;
     }
 
-    public DateFormat getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(DateFormat date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

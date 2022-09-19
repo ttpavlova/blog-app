@@ -6,48 +6,24 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
 
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_user;
     private String first_name;
-    private String last_name;
+    private String last_name;*/
+    @Id
     private String username;
     private String password;
-    private Integer id_authority;
+    /*private Integer id_authority;*/
+    private Boolean enabled;
 
     // constructor
     User() {}
 
-    User(String first_name, String last_name, String username, String password) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+    User(String username, String password, Boolean enabled) {
         this.username = username;
         this.password = password;
-        this.id_authority = 1;
-    }
-
-    public Integer getId() {
-        return id_user;
-    }
-
-    public void setId(Integer id_user) {
-        this.id_user = id_user;
-    }
-
-    public String getFirst_name() {
-        return first_name;
-    }
-
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+        this.enabled = enabled;
     }
 
     public String getUsername() {
@@ -66,11 +42,11 @@ public class User {
         this.password = password;
     }
 
-    public Integer getId_authority() {
-        return id_authority;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setId_authority(Integer id_authority) {
-        this.id_authority = id_authority;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }
