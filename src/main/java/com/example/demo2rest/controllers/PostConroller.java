@@ -37,6 +37,11 @@ public class PostConroller {
         return postRepository.save(newPost);
     }
 
+    /*@PostMapping(path = "/posts")
+    public Post newPost(@RequestBody Post newPost) {
+        return postRepository.save(newPost);
+    }*/
+
     @GetMapping(path = "/posts/{id}")
     EntityModel<Post> one(@PathVariable Integer id) {
         Post post = postRepository.findById(id)

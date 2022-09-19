@@ -23,4 +23,9 @@ public class UserController {
         String currentUsername = principal.getName();
         return userRepository.findByUsername(currentUsername);
     }
+
+    public String getCurrentUsername(Principal principal) {
+        String currentUsername = principal.getName();
+        return currentUsername;
+    }
 }

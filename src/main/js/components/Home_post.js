@@ -34,11 +34,12 @@ function Home_post() {
     });
 
       const updatedPostList = posts.map((post) => {
-        if (id === post.id) {
+        if (id === post.id_post) {
           return {...post, name: name, text: text};
         }
         return post;
       });
+      console.log(updatedPostList);
       setPosts(updatedPostList);
     }
 
@@ -51,7 +52,9 @@ function Home_post() {
           }
       });
 
-      const updatedPostList = posts.filter((post) => id !== post.id);
+      const updatedPostList = posts.filter((post) => id !== post.id_post);
+      console.log(updatedPostList);
+      console.log(id);
       setPosts(updatedPostList);
   }
 

@@ -1,10 +1,14 @@
 package com.example.demo2rest.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
+@JsonIgnoreProperties(value = {"password", "enabled"})
 public class User {
 
     /*@Id
@@ -14,8 +18,9 @@ public class User {
     private String last_name;*/
     @Id
     private String username;
-    private String password;
-    /*private Integer id_authority;*/
+
+    private  String password;
+
     private Boolean enabled;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")

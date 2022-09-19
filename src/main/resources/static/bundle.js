@@ -734,8 +734,7 @@ function AddPostForm(props) {
 
               newPost = {
                 name: name,
-                text: text,
-                username: username
+                text: text
               };
               console.log(newPost);
               _context.next = 5;
@@ -1312,7 +1311,7 @@ function Home_post() {
 
             case 4:
               updatedPostList = posts.map(function (post) {
-                if (id === post.id) {
+                if (id === post.id_post) {
                   return _objectSpread(_objectSpread({}, post), {}, {
                     name: name,
                     text: text
@@ -1321,9 +1320,10 @@ function Home_post() {
 
                 return post;
               });
+              console.log(updatedPostList);
               setPosts(updatedPostList);
 
-            case 6:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -1355,11 +1355,13 @@ function Home_post() {
 
             case 2:
               updatedPostList = posts.filter(function (post) {
-                return id !== post.id;
+                return id !== post.id_post;
               });
+              console.log(updatedPostList);
+              console.log(id);
               setPosts(updatedPostList);
 
-            case 4:
+            case 6:
             case "end":
               return _context2.stop();
           }
