@@ -23,12 +23,11 @@ public class Post {
 
     }
 
-    /*Post(String name, String text, Date date, Integer id_user) {
+    Post(String name, String text, User username) {
         this.name = name;
         this.text = text;
-        this.date = date;
-        this.id_user = id_user;
-    }*/
+        this.username = username;
+    }
 
     public Integer getId_post() {
         return id_post;

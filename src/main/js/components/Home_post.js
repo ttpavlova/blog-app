@@ -5,6 +5,7 @@ import Post from "./Post";
 
 function Home_post() {
     const [posts, setPosts] = useState([]);
+    const [username, setUsername] = useState("");
 
     const listPosts = posts.map((post) => (
       <Post
@@ -15,7 +16,7 @@ function Home_post() {
         username={post.user.username}
         editPost={editPost}
         deletePost={deletePost}
-        key={post.id}
+        key={post.id_post}
       />
     ));
 
@@ -63,7 +64,14 @@ function Home_post() {
       setPosts(data);
   }
 
+    async function getCurrentUsername() {
+      const res = await fetch("/api/username");
+      const username = await res.json();
+      setUsername(username.username);
+    }  
+
     useEffect(() => {
+        getCurrentUsername();
         fetchData();
     }, []);
 
@@ -74,7 +82,7 @@ function Home_post() {
     return (
         <div>
             <h1>Hi.</h1>
-            <AddPostForm fetchData={fetchData} />
+            <AddPostForm fetchData={fetchData} username={username} />
             <br/>
             <ol>{listPosts}</ol>
         </div>

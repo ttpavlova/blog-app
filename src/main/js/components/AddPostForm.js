@@ -4,11 +4,13 @@ import { useState } from "react";
 function AddPostForm(props) {
     const [name, setName] = useState("");
     const [text, setText] = useState("");
+    const username = props.username;
 
     async function handleSubmit(e) {
         e.preventDefault();
         // alert("Hi");
-        const newPost = { name, text };
+        const newPost = { name, text, username };
+        console.log(newPost);
         
         await fetch('/api/posts', {
             method: "POST",
