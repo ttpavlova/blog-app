@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping(path = "/username")
     @ResponseBody
-    User getCurrentUsername(Principal principal) {
+    User getCurrentUser(Principal principal) {
         String currentUsername = principal.getName();
         return userRepository.findByUsername(currentUsername);
     }

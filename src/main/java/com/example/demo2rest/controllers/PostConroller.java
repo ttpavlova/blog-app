@@ -1,11 +1,15 @@
 package com.example.demo2rest.controllers;
 
 import com.example.demo2rest.entities.Post;
+import com.example.demo2rest.entities.User;
 import com.example.demo2rest.exceptions.PostNotFoundException;
 import com.example.demo2rest.repositories.PostRepository;
+import com.example.demo2rest.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -16,6 +20,8 @@ public class PostConroller {
 
     @Autowired
     private PostRepository postRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping(path = "/posts")
     public @ResponseBody Iterable<Post> getAllPosts() {
@@ -24,7 +30,10 @@ public class PostConroller {
     }
 
     @PostMapping(path = "/posts")
-    public Post newPost(@RequestBody Post newPost) {
+    public Post newPost(@RequestBody Post newPost, Principal principal) {
+        String currentUsername = principal.getName();
+        User user = userRepository.findByUsername(currentUsername);
+        newPost.setUser(user);
         return postRepository.save(newPost);
     }
 

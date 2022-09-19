@@ -9,7 +9,7 @@ function AddPostForm(props) {
     async function handleSubmit(e) {
         e.preventDefault();
         // alert("Hi");
-        const newPost = { name, text, username };
+        const newPost = { name, text };
         console.log(newPost);
         
         await fetch('/api/posts', {
