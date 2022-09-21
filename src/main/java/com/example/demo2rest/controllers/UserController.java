@@ -1,6 +1,6 @@
 package com.example.demo2rest.controllers;
 
-import com.example.demo2rest.entities.User;
+import com.example.demo2rest.entities.TheUser;
 import com.example.demo2rest.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +19,7 @@ public class UserController {
 
     @GetMapping(path = "/username")
     @ResponseBody
-    User getCurrentUser(Principal principal) {
+    TheUser getCurrentUser(Principal principal) {
         String currentUsername = principal.getName();
         return userRepository.findByUsername(currentUsername);
     }

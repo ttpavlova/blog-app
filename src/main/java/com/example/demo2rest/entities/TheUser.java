@@ -1,7 +1,8 @@
 package com.example.demo2rest.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import net.minidev.json.annotate.JsonIgnore;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,13 +10,15 @@ import java.util.List;
 @Entity
 @Table(name = "users")
 @JsonIgnoreProperties(value = {"password", "enabled"})
-public class User {
+public class TheUser {
 
     /*@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_user;
     private String first_name;
     private String last_name;*/
+    public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();
+
     @Id
     private String username;
 
@@ -27,9 +30,9 @@ public class User {
     private List<Post> posts;
 
     // constructor
-    User() {}
+    TheUser() {}
 
-    User(String username, String password, Boolean enabled) {
+    public TheUser(String username, String password, Boolean enabled) {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
@@ -48,7 +51,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = PASSWORD_ENCODER.encode(password);
     }
 
     public Boolean getEnabled() {

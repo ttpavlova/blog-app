@@ -717,7 +717,7 @@ function AddPostForm(props) {
       text = _useState4[0],
       setText = _useState4[1];
 
-  var username = props.username;
+  var currentUsername = props.currentUsername;
 
   function handleSubmit(_x) {
     return _handleSubmit.apply(this, arguments);
@@ -1267,8 +1267,8 @@ function Home_post() {
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      username = _useState4[0],
-      setUsername = _useState4[1];
+      currentUsername = _useState4[0],
+      setCurrentUsername = _useState4[1];
 
   var listPosts = posts.map(function (post) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Post__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -1277,6 +1277,7 @@ function Home_post() {
       text: post.text,
       date: post.date,
       username: post.user.username,
+      currentUsername: currentUsername,
       editPost: editPost,
       deletePost: deletePost,
       key: post.id_post
@@ -1410,7 +1411,7 @@ function Home_post() {
 
   function _getCurrentUsername() {
     _getCurrentUsername = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-      var res, username;
+      var res, currentUsername;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
@@ -1424,8 +1425,8 @@ function Home_post() {
               return res.json();
 
             case 5:
-              username = _context4.sent;
-              setUsername(username.username);
+              currentUsername = _context4.sent;
+              setCurrentUsername(currentUsername.username);
 
             case 7:
             case "end":
@@ -1448,11 +1449,11 @@ function Home_post() {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Hi."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AddPostForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
     fetchData: fetchData,
-    username: username
+    currentUsername: currentUsername
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, listPosts));
 }
 
-_s2(Home_post, "0JU8AsHbLD5FC/2lggi8rSlgqDY=");
+_s2(Home_post, "aZBtopivjRGiEvE9DPrkBPLOMo0=");
 
 _c = Home_post;
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Home_post);
@@ -1545,6 +1546,21 @@ function Post(props) {
     setEditing(false);
   }
 
+  function isAdmin() {
+    if (props.currentUsername === "admin") {
+      return true;
+    }
+  } // check if the authorized user has access to edit and delete functions
+
+
+  function hasAccess() {
+    if (props.currentUsername === props.username || isAdmin()) {
+      return true;
+    }
+
+    return false;
+  }
+
   var editingTemplate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -1577,13 +1593,13 @@ function Post(props) {
     type: "button",
     className: "btn",
     onClick: function onClick() {
-      return setEditing(true);
+      return hasAccess() ? setEditing(true) : alert("No access");
     }
   }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "button",
     className: "btn",
     onClick: function onClick() {
-      return props.deletePost(props.id);
+      return hasAccess() ? props.deletePost(props.id) : alert("No access");
     }
   }, "Delete")));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {

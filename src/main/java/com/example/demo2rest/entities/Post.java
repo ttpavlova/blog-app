@@ -1,7 +1,6 @@
 package com.example.demo2rest.entities;
 
 import javax.persistence.*;
-import java.text.DateFormat;
 import java.util.Date;
 
 @Entity
@@ -17,13 +16,13 @@ public class Post {
 
     @ManyToOne
     @JoinColumn(name = "username", nullable = false)
-    private User username;
+    private TheUser username;
 
     Post() {
 
     }
 
-    Post(String name, String text, User username) {
+    Post(String name, String text, TheUser username) {
         this.name = name;
         this.text = text;
         this.username = username;
@@ -61,11 +60,11 @@ public class Post {
         this.date = date;
     }
 
-    public User getUser() {
+    public TheUser getUser() {
         return username;
     }
 
-    public void setUser(User username) {
+    public void setUser(TheUser username) {
         this.username = username;
     }
 }

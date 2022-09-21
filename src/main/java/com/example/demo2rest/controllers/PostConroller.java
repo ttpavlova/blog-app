@@ -1,7 +1,7 @@
 package com.example.demo2rest.controllers;
 
 import com.example.demo2rest.entities.Post;
-import com.example.demo2rest.entities.User;
+import com.example.demo2rest.entities.TheUser;
 import com.example.demo2rest.exceptions.PostNotFoundException;
 import com.example.demo2rest.repositories.PostRepository;
 import com.example.demo2rest.repositories.UserRepository;
@@ -32,8 +32,8 @@ public class PostConroller {
     @PostMapping(path = "/posts")
     public Post newPost(@RequestBody Post newPost, Principal principal) {
         String currentUsername = principal.getName();
-        User user = userRepository.findByUsername(currentUsername);
-        newPost.setUser(user);
+        TheUser theUser = userRepository.findByUsername(currentUsername);
+        newPost.setUser(theUser);
         return postRepository.save(newPost);
     }
 
