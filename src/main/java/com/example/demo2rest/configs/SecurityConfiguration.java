@@ -76,11 +76,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     // db authentication
     @Bean
     public JdbcUserDetailsManager users(DataSource dataSource) {
-        UserDetails admin = User.builder()
-                .username("admin")
-                .password("{bcrypt}$2a$12$q29eD1ktZN9OalGUOhykz.qwSq7u0Is6pXIP2FGV3rrNMx.M4lWl.")
-                .roles("ADMIN", "USER")
-                .build();
         UserDetails user = User.builder()
                 .username("user")
                 .password("{bcrypt}$2a$12$q29eD1ktZN9OalGUOhykz.qwSq7u0Is6pXIP2FGV3rrNMx.M4lWl.")
@@ -91,15 +86,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .password("{bcrypt}$2a$12$q29eD1ktZN9OalGUOhykz.qwSq7u0Is6pXIP2FGV3rrNMx.M4lWl.")
                 .roles("USER")
                 .build();
+        UserDetails admin = User.builder()
+                .username("admin")
+                .password("{bcrypt}$2a$12$q29eD1ktZN9OalGUOhykz.qwSq7u0Is6pXIP2FGV3rrNMx.M4lWl.")
+                .roles("ADMIN", "USER")
+                .build();
         JdbcUserDetailsManager users = new JdbcUserDetailsManager(dataSource);
-        if (!users.userExists(admin.getUsername())) {
-            users.createUser(admin);
-        }
         if(!users.userExists(user.getUsername())) {
             users.createUser(user);
         }
         if(!users.userExists(user2.getUsername())) {
             users.createUser(user2);
+        }
+        if (!users.userExists(admin.getUsername())) {
+            users.createUser(admin);
         }
 
         return users;

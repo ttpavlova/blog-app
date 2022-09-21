@@ -23,6 +23,21 @@ function Post(props) {
         setEditing(false);
     }
 
+    function isAdmin() {
+        if (props.currentUsername === "admin") {
+            return true;
+        }
+    }
+
+    // check if the authorized user has access to edit and delete functions
+    function hasAccess() {
+        if ((props.currentUsername === props.username) || isAdmin()) {
+            return true;
+        }
+
+        return false;
+    }
+
     const editingTemplate = (
         <form onSubmit={handleSubmit}>
             <input
@@ -58,14 +73,14 @@ function Post(props) {
                 <button
                     type="button"
                     className="btn"
-                    onClick={() => setEditing(true)}
+                    onClick={() => hasAccess() ? setEditing(true) : alert("No access")}
                 >
                     Edit
                 </button>
                 <button
                     type="button"
                     className="btn"
-                    onClick={() => props.deletePost(props.id)}
+                    onClick={() => hasAccess() ? props.deletePost(props.id) : alert("No access")}
                 >
                     Delete
                 </button>

@@ -4,7 +4,7 @@ import { useState } from "react";
 function AddPostForm(props) {
     const [name, setName] = useState("");
     const [text, setText] = useState("");
-    const username = props.username;
+    const currentUsername = props.currentUsername;
 
     async function handleSubmit(e) {
         e.preventDefault();

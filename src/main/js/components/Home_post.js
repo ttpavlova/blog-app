@@ -5,7 +5,7 @@ import Post from "./Post";
 
 function Home_post() {
     const [posts, setPosts] = useState([]);
-    const [username, setUsername] = useState("");
+    const [currentUsername, setCurrentUsername] = useState("");
 
     const listPosts = posts.map((post) => (
       <Post
@@ -14,6 +14,7 @@ function Home_post() {
         text={post.text}
         date={post.date}
         username={post.user.username}
+        currentUsername={currentUsername}
         editPost={editPost}
         deletePost={deletePost}
         key={post.id_post}
@@ -69,9 +70,9 @@ function Home_post() {
 
     async function getCurrentUsername() {
       const res = await fetch("/api/username");
-      const username = await res.json();
-      setUsername(username.username);
-    }  
+      const currentUsername = await res.json();
+      setCurrentUsername(currentUsername.username);
+    }
 
     useEffect(() => {
         getCurrentUsername();
@@ -85,7 +86,7 @@ function Home_post() {
     return (
         <div>
             <h1>Hi.</h1>
-            <AddPostForm fetchData={fetchData} username={username} />
+            <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
             <br/>
             <ol>{listPosts}</ol>
         </div>
