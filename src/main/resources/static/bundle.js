@@ -1272,7 +1272,7 @@ function Home_post() {
 
   var listPosts = posts.map(function (post) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Post__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      id: post.id_post,
+      id: post.id,
       name: post.name,
       text: post.text,
       date: post.date,
@@ -1280,7 +1280,7 @@ function Home_post() {
       currentUsername: currentUsername,
       editPost: editPost,
       deletePost: deletePost,
-      key: post.id_post
+      key: post.id
     });
   });
 
@@ -1312,7 +1312,7 @@ function Home_post() {
 
             case 4:
               updatedPostList = posts.map(function (post) {
-                if (id === post.id_post) {
+                if (id === post.id) {
                   return _objectSpread(_objectSpread({}, post), {}, {
                     name: name,
                     text: text
@@ -1356,7 +1356,7 @@ function Home_post() {
 
             case 2:
               updatedPostList = posts.filter(function (post) {
-                return id !== post.id_post;
+                return id !== post.id;
               });
               console.log(updatedPostList);
               console.log(id);

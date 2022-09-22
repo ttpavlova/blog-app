@@ -9,31 +9,31 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_post;
+    private Integer id;
     private String name;
     private String text;
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "username", nullable = false)
-    private TheUser username;
+    @JoinColumn(name = "id_user", nullable = false)
+    private User user;
 
     Post() {
 
     }
 
-    Post(String name, String text, TheUser username) {
+    Post(String name, String text, User user) {
         this.name = name;
         this.text = text;
-        this.username = username;
+        this.user = user;
     }
 
-    public Integer getId_post() {
-        return id_post;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId_post(Integer id_post) {
-        this.id_post = id_post;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -60,11 +60,11 @@ public class Post {
         this.date = date;
     }
 
-    public TheUser getUser() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUser(TheUser username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

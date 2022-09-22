@@ -9,7 +9,7 @@ function Home_post() {
 
     const listPosts = posts.map((post) => (
       <Post
-        id={post.id_post}
+        id={post.id}
         name={post.name}
         text={post.text}
         date={post.date}
@@ -17,7 +17,7 @@ function Home_post() {
         currentUsername={currentUsername}
         editPost={editPost}
         deletePost={deletePost}
-        key={post.id_post}
+        key={post.id}
       />
     ));
 
@@ -35,7 +35,7 @@ function Home_post() {
     });
 
       const updatedPostList = posts.map((post) => {
-        if (id === post.id_post) {
+        if (id === post.id) {
           return {...post, name: name, text: text};
         }
         return post;
@@ -53,7 +53,7 @@ function Home_post() {
           }
       });
 
-      const updatedPostList = posts.filter((post) => id !== post.id_post);
+      const updatedPostList = posts.filter((post) => id !== post.id);
       console.log(updatedPostList);
       console.log(id);
       setPosts(updatedPostList);

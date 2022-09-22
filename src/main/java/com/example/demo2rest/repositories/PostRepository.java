@@ -8,12 +8,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 @PreAuthorize("hasRole('ROLE_USER')")
 public interface PostRepository extends PagingAndSortingRepository<Post, Integer> {
     @Override
-    @PreAuthorize("#post?.user?.username == authentication?.principal.username")
+    @PreAuthorize("#post?.user?.username == authentication?.principal.username || hasRole('ROLE_ADMIN')")
     Post save(@Param("post") Post post);
 
     @Override
-    @PreAuthorize("@postRepository.findById(#id_post)?.user?.username == authentication?.principal.username")
-    void deleteById(@Param("id_post") Integer id);
+    @PreAuthorize("@postRepository.findById(#id)?.user?.username == authentication?.principal.username")
+    void deleteById(@Param("id") Integer id);
 
     @Override
     @PreAuthorize("#post?.user?.username == authentication?.principal.username")
