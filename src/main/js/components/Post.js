@@ -69,7 +69,7 @@ function Post(props) {
             <p>{props.name}</p>
             <p>{props.text}</p>
             <p>{props.username}</p>
-            <div className="btn-group">
+            <div className={"btn-group" + (hasAccess() ? "" : " hidden")}>
                 <button
                     type="button"
                     className="btn"

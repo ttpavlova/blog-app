@@ -85,7 +85,12 @@ function Home_post() {
 
     return (
         <div>
-            <h1>Hi.</h1>
+            <h1>Hi, {currentUsername}.</h1>
+
+            <form name="logout" action="/logout" method="post">
+              <button type="submit">Log out</button>
+            </form>
+
             <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
             <br/>
             <ol>{listPosts}</ol>

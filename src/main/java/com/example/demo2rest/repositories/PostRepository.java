@@ -11,11 +11,11 @@ public interface PostRepository extends PagingAndSortingRepository<Post, Integer
     @PreAuthorize("#post?.user?.username == authentication?.principal.username || hasRole('ROLE_ADMIN')")
     Post save(@Param("post") Post post);
 
-    @Override
+    /*@Override
     @PreAuthorize("@postRepository.findById(#id)?.user?.username == authentication?.principal.username")
     void deleteById(@Param("id") Integer id);
 
     @Override
     @PreAuthorize("#post?.user?.username == authentication?.principal.username")
-    void delete(@Param("post") Post post);
+    void delete(@Param("post") Post post);*/
 }

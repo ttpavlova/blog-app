@@ -37,6 +37,10 @@ module.exports = {
                         plugins: [isDevelopment && require.resolve('react-refresh/babel')].filter(Boolean)
                     }
                 }]
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
             }
         ]
     },
