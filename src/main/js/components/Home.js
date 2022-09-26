@@ -1,46 +1,51 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import AddEmployeeForm from "./AddEmployeeForm";
-import Employee from "./Employee";
+import AddPostForm from "./AddPostForm";
+import Post from "./Post";
 
-function Home() {
-    const [employeeData, setEmployeeData] = useState([]);
+function Home(props) {
+    const [posts, setPosts] = useState([]);
+    const [currentUsername, setCurrentUsername] = useState("");
 
-    const listEmployees = employeeData.map((employee) => (
-      <Employee
-        id={employee.id}
-        name={employee.name}
-        role={employee.role}
-        editEmployee={editEmployee}
-        deleteEmployee={deleteEmployee}
-        key={employee.id}
+    const listPosts = posts.map((post) => (
+      <Post
+        id={post.id}
+        name={post.name}
+        text={post.text}
+        date={post.date}
+        username={post.user.username}
+        currentUsername={currentUsername}
+        editPost={editPost}
+        deletePost={deletePost}
+        key={post.id}
       />
     ));
 
-    async function editEmployee(id, name, role) {
-      const updatedEmployee = { name, role };
-      console.log(updatedEmployee);
+    async function editPost(id, name, text) {
+      const updatedPost = { name, text };
+      console.log(updatedPost);
 
-      await fetch('/api/employees/' + id, {
+      await fetch('/api/posts/' + id, {
         method: "PUT",
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(updatedEmployee),
+        body: JSON.stringify(updatedPost),
     });
 
-      const updatedEmployeeList = employeeData.map((employee) => {
-        if (id === employee.id) {
-          return {...employee, name: name, role: role};
+      const updatedPostList = posts.map((post) => {
+        if (id === post.id) {
+          return {...post, name: name, text: text};
         }
-        return employee;
+        return post;
       });
-      setEmployeeData(updatedEmployeeList);
+      console.log(updatedPostList);
+      setPosts(updatedPostList);
     }
 
-    async function deleteEmployee(id) {
-      await fetch('/api/employees/' + id, {
+    async function deletePost(id) {
+      await fetch('/api/posts/' + id, {
           method: "DELETE",
           headers: {
               "Accept": "application/json",
@@ -48,56 +53,47 @@ function Home() {
           }
       });
 
-      const updatedEmployeeList = employeeData.filter((employee) => id !== employee.id);
-      setEmployeeData(updatedEmployeeList);
+      const updatedPostList = posts.filter((post) => id !== post.id);
+      console.log(updatedPostList);
+      console.log(id);
+      setPosts(updatedPostList);
   }
-
-    // function addEmployee(name, role) {
-    //   // alert(name + ", " + role);
-    //   // const newEmployee = { name, role };
-    //   setEmployeeData([...employeeData, newEmployee]);
-    // }
 
     async function fetchData() {
       const res = await fetch(
-          `/api/employees`
+          `/api/posts`
       );
 
       const data = await res.json();
-      setEmployeeData(data);
+      setPosts(data);
   }
 
+    async function getCurrentUsername() {
+      const res = await fetch("/api/username");
+      const currentUsername = await res.json();
+      setCurrentUsername(currentUsername.username);
+    }
+
     useEffect(() => {
+        getCurrentUsername();
         fetchData();
     }, []);
 
-    // useEffect(() => {
-    //     fetch("/api/employees")
-    //       .then(res => res.json())
-    //       .then(
-    //         (result) => {
-    //           setEmployeeData(result);
-    //           console.log(result);
-    //           console.log(employeeData);
-    //         },
-    //         // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-    //         // чтобы не перехватывать исключения из ошибок в самих компонентах.
-    //         (error) => {
-    //           console.log(error);
-    //         }
-    //       )
-    //   }, []);
-
-    if (!employeeData) {
+    if (!posts) {
         return <div>Something is wrong with the data...</div>;
     }
 
     return (
         <div>
-            <h1>Hi.</h1>
-            <AddEmployeeForm fetchData={fetchData} />
+            <h1>Hi, {currentUsername}.</h1>
+
+            <form name="logout" action="/logout" method="post">
+              <button type="submit">Log out</button>
+            </form>
+
+            <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
             <br/>
-            <ol>{listEmployees}</ol>
+            <ol>{listPosts}</ol>
         </div>
     );
 }

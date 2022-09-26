@@ -1,13 +1,38 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
+import { useState, useEffect } from 'react';
 import Home from './components/Home';
-import Home_post from './components/Home_post';
 // import '../resources/static/main.css';
-import './style.css';
+// import './style.css';
+import Login from './components/Login';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <Home_post />
-  </React.StrictMode>
-);
+function App() {
+  // const [currentUsername, setCurrentUsername] = useState("");
+
+  // async function getCurrentUsername() {
+  //   const res = await fetch("/api/username");
+  //   const currentUsername = await res.json();
+  //   console.log(currentUsername);
+  //   setCurrentUsername(currentUsername.username);
+  // }
+
+  // useEffect(() => {
+  //   getCurrentUsername();
+  // }, []);
+
+  return (
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path="/login" element={<Login />} />
+    //     <Route path="/" element={<Home_post />} />
+    //   </Routes>
+    // </BrowserRouter>
+    <div>
+      {/* {(currentUsername == "") ? <Login /> : <Home currentUsername={currentUsername} />} */}
+      <Home />
+    </div>
+  );
+}
+
+export default App;

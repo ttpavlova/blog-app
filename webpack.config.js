@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const isDevelopment = !isProduction;
 
 module.exports = {
-    entry: './src/main/js/App.js',
+    entry: './src/main/js/index.js',
 	target: process.env.NODE_ENV === "development" ? "web" : "browserslist",
     cache: true,
     mode: isDevelopment ? 'development' : 'production',
