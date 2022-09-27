@@ -5,6 +5,7 @@ import Post from "./Post";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Avatar from "./Avatar";
 
 function Home(props) {
     const [posts, setPosts] = useState([]);
@@ -89,14 +90,16 @@ function Home(props) {
     return (
         <Container>
           <Row>
-            <Col></Col>
-            <Col>
+            <Col xs={4}></Col>
+            <Col xs={4}>
               <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
               <br/>
               <ol>{listPosts}</ol>
             </Col>
-            <Col>
+            <Col xs={2}></Col>
+            <Col xs={2}>
               <h1>Hi, {currentUsername}.</h1>
+              <Avatar />
               <form name="logout" action="/logout" method="post">
                 <button type="submit">Log out</button>
               </form>

@@ -2,6 +2,12 @@ h1 {
     color: red;
 }
 
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 .btn-group.hidden {
     display: none;
 }
