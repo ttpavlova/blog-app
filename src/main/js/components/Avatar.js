@@ -1,10 +1,11 @@
 import React from "react";
 import user_avatar from "../img/user_avatar.png";
 
-function Avatar() {
+function Avatar(props) {
     return (
-        <div>
-            <img src={user_avatar} className="avatar" alt="user avatar" />
+        <div className="d-flex flex-column justify-content-center align-items-center">
+            <img src={user_avatar} className="avatar-img" alt="user avatar" />
+            <p>{props.currentUsername}</p>
         </div>
     );
 }

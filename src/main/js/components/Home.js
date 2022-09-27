@@ -98,11 +98,9 @@ function Home(props) {
             </Col>
             <Col xs={2}></Col>
             <Col xs={2}>
-              <h1>Hi, {currentUsername}.</h1>
-              <Avatar />
-              <form name="logout" action="/logout" method="post">
-                <button type="submit">Log out</button>
-              </form>
+              {/* <h1>Hi, {currentUsername}.</h1> */}
+              <Avatar currentUsername={currentUsername} />
+              
             </Col>
           </Row>
         </Container>
