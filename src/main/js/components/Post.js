@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from 'react-bootstrap/Form';
 
 function Post(props) {
 
@@ -57,8 +59,8 @@ function Post(props) {
             >
             </input>
             <div className="btn-group">
-                <button type="button" className="btn" onClick={() => setEditing(false)}>Cancel</button>
-                <button type="submit" className="btn">Save</button>
+                <Button type="button" variant="outline-primary" className="btn" onClick={() => setEditing(false)}>Cancel</Button>
+                <Button type="submit" variant="primary" className="btn">Save</Button>
             </div>
         </form>
     );
@@ -70,20 +72,22 @@ function Post(props) {
             <p>{props.text}</p>
             <p>{props.username}</p>
             <div className={"btn-group" + (hasAccess() ? "" : " hidden")}>
-                <button
+                <Button
                     type="button"
+                    variant="primary"
                     className="btn"
                     onClick={() => hasAccess() ? setEditing(true) : alert("No access")}
                 >
                     Edit
-                </button>
-                <button
+                </Button>
+                <Button
                     type="button"
+                    variant="outline-danger"
                     className="btn"
                     onClick={() => hasAccess() ? props.deletePost(props.id) : alert("No access")}
                 >
                     Delete
-                </button>
+                </Button>
             </div>
         </div>
     );

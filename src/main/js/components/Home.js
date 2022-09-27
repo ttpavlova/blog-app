@@ -2,6 +2,9 @@ import React from "react";
 import { useState, useEffect } from "react";
 import AddPostForm from "./AddPostForm";
 import Post from "./Post";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Home(props) {
     const [posts, setPosts] = useState([]);
@@ -84,17 +87,22 @@ function Home(props) {
     }
 
     return (
-        <div>
-            <h1>Hi, {currentUsername}.</h1>
-
-            <form name="logout" action="/logout" method="post">
-              <button type="submit">Log out</button>
-            </form>
-
-            <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
-            <br/>
-            <ol>{listPosts}</ol>
-        </div>
+        <Container>
+          <Row>
+            <Col></Col>
+            <Col>
+              <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
+              <br/>
+              <ol>{listPosts}</ol>
+            </Col>
+            <Col>
+              <h1>Hi, {currentUsername}.</h1>
+              <form name="logout" action="/logout" method="post">
+                <button type="submit">Log out</button>
+              </form>
+            </Col>
+          </Row>
+        </Container>
     );
 }
 

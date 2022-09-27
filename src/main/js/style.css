@@ -1,3 +1,7 @@
 h1 {
     color: red;
 }
+
+.btn-group.hidden {
+    display: none;
+}

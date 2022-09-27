@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Form from 'react-bootstrap/Form';
 
 function AddPostForm(props) {
     const [name, setName] = useState("");
@@ -30,13 +32,33 @@ function AddPostForm(props) {
         setName(e.target.value);
     }
 
-    function handleChangeRole(e) {
+    function handleChangeText(e) {
         setText(e.target.value);
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="new-post-name-input">
+        <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                    type="text"
+                    placeholder="Enter name"
+                    value={name}
+                    onChange={handleChangeName}
+                />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicText">
+                <Form.Label>Text</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    placeholder="Enter text"
+                    style={{ height: '100px' }}
+                    value={text}
+                    onChange={handleChangeText}
+                />
+            </Form.Group>
+            {/* <label htmlFor="new-post-name-input">
                 Add a new post
             </label>
             <input
@@ -55,12 +77,13 @@ function AddPostForm(props) {
                 placeholder="text"
                 value={text}
                 autoComplete="off"
-                onChange={handleChangeRole}
-            />
-            <button type="submit">
+                onChange={handleChangeText}
+            /> */}
+            {/* <button type="submit">
                 Add
-            </button>
-        </form>
+            </button> */}
+            <Button type="submit" variant="primary">Add</Button>
+        </Form>
     );
 }
 
