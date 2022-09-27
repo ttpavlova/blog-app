@@ -589,6 +589,21 @@ ansiHTML.reset()
 
 /***/ }),
 
+/***/ "./src/main/js/img/user_avatar.png":
+/*!*****************************************!*\
+  !*** ./src/main/js/img/user_avatar.png ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "8d49e377c7c342895ec221e4b90fb133.png");
+
+/***/ }),
+
 /***/ "./src/main/js/style.css":
 /*!*******************************!*\
   !*** ./src/main/js/style.css ***!
@@ -884,7 +899,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-Object(function webpackMissingModule() { var e = new Error("Cannot find module './img/user_avatar.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _img_user_avatar_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/user_avatar.png */ "./src/main/js/img/user_avatar.png");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
 
@@ -893,7 +908,7 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
 
 function Avatar() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: Object(function webpackMissingModule() { var e = new Error("Cannot find module './img/user_avatar.png'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()),
+    src: _img_user_avatar_png__WEBPACK_IMPORTED_MODULE_1__["default"],
     alt: "user avatar"
   }));
 }
@@ -47250,6 +47265,26 @@ module.exports = getWDSMetadata;
 /******/ 			if (!module.children) module.children = [];
 /******/ 			return module;
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/react refresh */

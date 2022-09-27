@@ -11,3 +11,8 @@ ol {
 .btn-group.hidden {
     display: none;
 }
+
+.avatar {
+    width: 100px;
+    height: 100px;
+}
