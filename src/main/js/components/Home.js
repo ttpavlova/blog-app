@@ -90,17 +90,15 @@ function Home(props) {
     return (
         <Container>
           <Row>
-            <Col xs={4}></Col>
-            <Col xs={4}>
+            <Col lg={4}></Col>
+            <Col lg={4}>
               <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
               <br/>
               <ol>{listPosts}</ol>
             </Col>
-            <Col xs={2}></Col>
-            <Col xs={2}>
-              {/* <h1>Hi, {currentUsername}.</h1> */}
+            <Col lg={2}></Col>
+            <Col xs={{ order: "first" }} lg={{ span: 2, order: "last" }}>
               <Avatar currentUsername={currentUsername} />
-              
             </Col>
           </Row>
         </Container>
