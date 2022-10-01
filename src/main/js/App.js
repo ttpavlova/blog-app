@@ -6,7 +6,7 @@ import Home from './components/Home';
 // import '../resources/static/main.css';
 // import './style.css';
 import Login from './components/Login';
-import NavbarMenu from './components/NavbarMenu';
+import NavigationBar from './components/NavigationBar';
 
 function App() {
   // const [currentUsername, setCurrentUsername] = useState("");
@@ -30,7 +30,7 @@ function App() {
     //   </Routes>
     // </BrowserRouter>
     <div>
-      <NavbarMenu />
+      <NavigationBar />
       {/* {(currentUsername == "") ? <Login /> : <Home currentUsername={currentUsername} />} */}
       <Home />
     </div>

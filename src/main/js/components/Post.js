@@ -93,7 +93,7 @@ function Post(props) {
     );
 
     return (
-        <li className="post">{isEditing ? editingTemplate : viewTemplate}</li>
+        <div className="post">{isEditing ? editingTemplate : viewTemplate}</div>
     );
 }
 

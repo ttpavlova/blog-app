@@ -88,20 +88,20 @@ function Home(props) {
     }
 
     return (
-        <Container>
-          <Row>
-            <Col lg={4}></Col>
-            <Col lg={4}>
-              <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
-              <br/>
-              <ol>{listPosts}</ol>
-            </Col>
-            <Col lg={2}></Col>
-            <Col xs={{ order: "first" }} lg={{ span: 2, order: "last" }}>
-              <Avatar currentUsername={currentUsername} />
-            </Col>
-          </Row>
-        </Container>
+      <Container>
+        <Row>
+          <Col md={3} lg={4}></Col>
+          <Col md={6} lg={4}>
+            <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
+            <br/>
+            <div>{listPosts}</div>
+          </Col>
+          <Col md={1} lg={2}></Col>
+          <Col xs={{ order: "first" }} md={{ span: 2, order: "last" }} lg={{ span: 2 }}>
+            <Avatar currentUsername={currentUsername} />
+          </Col>
+        </Row>
+      </Container>
     );
 }
 

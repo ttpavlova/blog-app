@@ -4,11 +4,11 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Button from "react-bootstrap/Button";
 
-function NavbarMenu() {
+function NavigationBar() {
     return (
         <Navbar bg="light" variant="light" sticky="top">
             <Container>
-                <Navbar.Brand href="#">Blog App</Navbar.Brand>
+                <Navbar.Brand href="/">Blog App</Navbar.Brand>
                 <Nav className="me-auto">
                     <Nav.Link href="#">Home</Nav.Link>
                 </Nav>
@@ -21,4 +21,4 @@ function NavbarMenu() {
     );
 }
 
-export default NavbarMenu;
+export default NavigationBar;
