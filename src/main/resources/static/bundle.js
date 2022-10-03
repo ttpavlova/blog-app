@@ -2775,7 +2775,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Home */ "./src/main/js/components/Home.js");
 /* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Login */ "./src/main/js/components/Login.js");
 /* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_Login__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_NavbarMenu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/NavbarMenu */ "./src/main/js/components/NavbarMenu.js");
+/* harmony import */ var _components_NavigationBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/NavigationBar */ "./src/main/js/components/NavigationBar.js");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
 
@@ -2808,7 +2808,7 @@ function App() {
     //     <Route path="/" element={<Home_post />} />
     //   </Routes>
     // </BrowserRouter>
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_NavbarMenu__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null))
+    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_NavigationBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null))
   );
 }
 
@@ -2907,8 +2907,7 @@ function AddPostForm(props) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              e.preventDefault(); // alert("Hi");
-
+              e.preventDefault();
               newPost = {
                 name: name,
                 text: text
@@ -2925,10 +2924,11 @@ function AddPostForm(props) {
               });
 
             case 5:
-              props.fetchData(); // setName("");
-              // setRole("");
+              props.fetchData();
+              setName("");
+              setText("");
 
-            case 6:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -2946,6 +2946,25 @@ function AddPostForm(props) {
     setText(e.target.value);
   }
 
+  function areInputsEmpty() {
+    if (name === "" || text === "") {
+      return true;
+    }
+  }
+
+  function getFormattedData() {
+    // MySQL retrieves and displays TIMESTAMP values in ' YYYY-MM-DD hh:mm:ss ' format
+    var today = new Date();
+    console.log(today);
+    var year = today.getFullYear();
+    var month = today.getMonth();
+    var date = today.getDate();
+    var hours = today.getHours();
+    var minutes = today.getMinutes();
+    var seconds = today.getSeconds();
+    return "".concat(year, "-").concat(month, "-").concat(date, " ").concat(hours, ":").concat(minutes, ":").concat(seconds);
+  }
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"], {
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
@@ -2955,7 +2974,8 @@ function AddPostForm(props) {
     type: "text",
     placeholder: "Enter name",
     value: name,
-    onChange: handleChangeName
+    onChange: handleChangeName,
+    required: true
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
     className: "mb-3",
     controlId: "formBasicText"
@@ -2963,13 +2983,16 @@ function AddPostForm(props) {
     as: "textarea",
     placeholder: "Enter text",
     style: {
-      height: '100px'
+      height: '100px',
+      resize: 'none'
     },
     value: text,
-    onChange: handleChangeText
+    onChange: handleChangeText,
+    required: true
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "submit",
-    variant: "primary"
+    variant: "primary",
+    disabled: areInputsEmpty() ? true : ""
   }, "Add"));
 }
 
@@ -3021,12 +3044,14 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
 
 function Avatar(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex flex-column justify-content-center align-items-center"
+    className: "d-flex justify-content-center justify-content-md-end"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex flex-column align-items-center"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
     src: _img_user_avatar_png__WEBPACK_IMPORTED_MODULE_1__["default"],
     className: "avatar-img",
     alt: "user avatar"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.currentUsername));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.currentUsername)));
 }
 
 _c = Avatar;
@@ -3303,16 +3328,28 @@ function Home(props) {
   }
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_4__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Row__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    xs: 4
+    md: 3,
+    lg: 4
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    xs: 4
+    md: 6,
+    lg: 4
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AddPostForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
     fetchData: fetchData,
     currentUsername: currentUsername
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ol", null, listPosts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    xs: 2
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, listPosts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    md: 1,
+    lg: 2
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Col__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    xs: 2
+    xs: {
+      order: "first"
+    },
+    md: {
+      span: 2,
+      order: "last"
+    },
+    lg: {
+      span: 2
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Avatar__WEBPACK_IMPORTED_MODULE_3__["default"], {
     currentUsername: currentUsername
   }))));
@@ -3385,10 +3422,10 @@ if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Pr
 
 /***/ }),
 
-/***/ "./src/main/js/components/NavbarMenu.js":
-/*!**********************************************!*\
-  !*** ./src/main/js/components/NavbarMenu.js ***!
-  \**********************************************/
+/***/ "./src/main/js/components/NavigationBar.js":
+/*!*************************************************!*\
+  !*** ./src/main/js/components/NavigationBar.js ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3411,13 +3448,13 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
 
 
 
-function NavbarMenu() {
+function NavigationBar() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
     bg: "light",
     variant: "light",
     sticky: "top"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Container__WEBPACK_IMPORTED_MODULE_2__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Navbar__WEBPACK_IMPORTED_MODULE_1__["default"].Brand, {
-    href: "#"
+    href: "/"
   }, "Blog App"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3__["default"], {
     className: "me-auto"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Nav__WEBPACK_IMPORTED_MODULE_3__["default"].Link, {
@@ -3432,12 +3469,12 @@ function NavbarMenu() {
   }, "Log out"))));
 }
 
-_c = NavbarMenu;
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavbarMenu);
+_c = NavigationBar;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (NavigationBar);
 
 var _c;
 
-__webpack_require__.$Refresh$.register(_c, "NavbarMenu");
+__webpack_require__.$Refresh$.register(_c, "NavigationBar");
 
 const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
 const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
@@ -3569,11 +3606,20 @@ function Post(props) {
     variant: "primary",
     className: "btn"
   }, "Save")));
-  var viewTemplate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "btn-group" + (hasAccess() ? "" : " hidden")
+  var viewTemplate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "post__author mb-3"
+  }, props.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "post__name mb-3"
+  }, props.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "post__text mb-0"
+  }, props.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "post__footer d-flex justify-content-end"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "post__buttons" + (hasAccess() ? " mt-3" : " hidden")
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     type: "button",
-    variant: "primary",
+    variant: "outline-primary",
+    size: "sm",
     className: "btn",
     onClick: function onClick() {
       return hasAccess() ? setEditing(true) : alert("No access");
@@ -3581,12 +3627,13 @@ function Post(props) {
   }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
     type: "button",
     variant: "outline-danger",
-    className: "btn",
+    size: "sm",
+    className: "btn ms-2",
     onClick: function onClick() {
       return hasAccess() ? props.deletePost(props.id) : alert("No access");
     }
-  }, "Delete")));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, "Delete"))));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "post"
   }, isEditing ? editingTemplate : viewTemplate);
 }
@@ -8439,7 +8486,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "h1 {\r\n    color: red;\r\n}\r\n\r\nol {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.btn-group.hidden {\r\n    display: none;\r\n}\r\n\r\n.avatar-img {\r\n    width: 100px;\r\n    height: 100px;\r\n}", "",{"version":3,"sources":["webpack://./src/main/js/style.css"],"names":[],"mappings":"AAAA;IACI,UAAU;AACd;;AAEA;IACI,SAAS;IACT,UAAU;IACV,gBAAgB;AACpB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,YAAY;IACZ,aAAa;AACjB","sourcesContent":["h1 {\r\n    color: red;\r\n}\r\n\r\nol {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.btn-group.hidden {\r\n    display: none;\r\n}\r\n\r\n.avatar-img {\r\n    width: 100px;\r\n    height: 100px;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "h1 {\r\n    color: red;\r\n}\r\n\r\nol {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.container {\r\n    padding: 10px 0;\r\n    /* background-color: rgb(159, 177, 211); */\r\n}\r\n\r\n.post__buttons.hidden {\r\n    display: none;\r\n}\r\n\r\n.avatar-img {\r\n    width: 50px;\r\n    height: 50px;\r\n}\r\n\r\n.post {\r\n    margin-bottom: 20px;\r\n    padding: 20px;\r\n    background-color: rgba(0, 0, 0, 0.05);\r\n    border-radius: 10px;\r\n}\r\n\r\n.post:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.post__name {\r\n    font-size: 1.4rem;\r\n}\r\n\r\n.post__author {\r\n    font-size: 0.9rem;\r\n    font-weight: 600;\r\n}", "",{"version":3,"sources":["webpack://./src/main/js/style.css"],"names":[],"mappings":"AAAA;IACI,UAAU;AACd;;AAEA;IACI,SAAS;IACT,UAAU;IACV,gBAAgB;AACpB;;AAEA;IACI,eAAe;IACf,0CAA0C;AAC9C;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,mBAAmB;IACnB,aAAa;IACb,qCAAqC;IACrC,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;AACpB","sourcesContent":["h1 {\r\n    color: red;\r\n}\r\n\r\nol {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.container {\r\n    padding: 10px 0;\r\n    /* background-color: rgb(159, 177, 211); */\r\n}\r\n\r\n.post__buttons.hidden {\r\n    display: none;\r\n}\r\n\r\n.avatar-img {\r\n    width: 50px;\r\n    height: 50px;\r\n}\r\n\r\n.post {\r\n    margin-bottom: 20px;\r\n    padding: 20px;\r\n    background-color: rgba(0, 0, 0, 0.05);\r\n    border-radius: 10px;\r\n}\r\n\r\n.post:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.post__name {\r\n    font-size: 1.4rem;\r\n}\r\n\r\n.post__author {\r\n    font-size: 0.9rem;\r\n    font-weight: 600;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

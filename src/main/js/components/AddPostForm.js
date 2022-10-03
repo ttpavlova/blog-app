@@ -24,8 +24,9 @@ function AddPostForm(props) {
         });
 
         props.fetchData();
-        // setName("");
-        // setRole("");
+
+        setName("");
+        setText("");
     }
 
     function handleChangeName(e) {
