@@ -68,27 +68,31 @@ function Post(props) {
     const viewTemplate = (
         <div>
             {/* <p>{props.id}</p> */}
+            <p className="post__author mb-3">{props.username}</p>
             <p className="post__name mb-3">{props.name}</p>
-            <p className="post__text mb-3">{props.text}</p>
+            <p className="post__text mb-0">{props.text}</p>
             {/* <p>{props.date}</p> */}
-            <p className="post__author mb-0">{props.username}</p>
-            <div className={"btn-group" + (hasAccess() ? " mt-3" : " hidden")}>
-                <Button
-                    type="button"
-                    variant="primary"
-                    className="btn"
-                    onClick={() => hasAccess() ? setEditing(true) : alert("No access")}
-                >
-                    Edit
-                </Button>
-                <Button
-                    type="button"
-                    variant="outline-danger"
-                    className="btn"
-                    onClick={() => hasAccess() ? props.deletePost(props.id) : alert("No access")}
-                >
-                    Delete
-                </Button>
+            <div className="post__footer d-flex justify-content-end">
+                <div className={"post__buttons" + (hasAccess() ? " mt-3" : " hidden")}>
+                    <Button
+                        type="button"
+                        variant="outline-primary"
+                        size="sm"
+                        className="btn"
+                        onClick={() => hasAccess() ? setEditing(true) : alert("No access")}
+                    >
+                        Edit
+                    </Button>
+                    <Button
+                        type="button"
+                        variant="outline-danger"
+                        size="sm"
+                        className="btn ms-2"
+                        onClick={() => hasAccess() ? props.deletePost(props.id) : alert("No access")}
+                    >
+                        Delete
+                    </Button>
+                </div>
             </div>
         </div>
     );

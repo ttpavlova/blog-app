@@ -104,7 +104,7 @@ function AddPostForm(props) {
             {/* <button type="submit">
                 Add
             </button> */}
-            <Button type="submit" variant="primary" disabled={areInputsEmpty() ? "true" : ""}>Add</Button>
+            <Button type="submit" variant="primary" disabled={areInputsEmpty() ? true : ""}>Add</Button>
         </Form>
     );
 }

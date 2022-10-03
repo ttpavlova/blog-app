@@ -13,7 +13,7 @@ ol {
     /* background-color: rgb(159, 177, 211); */
 }
 
-.btn-group.hidden {
+.post__buttons.hidden {
     display: none;
 }
 
@@ -25,7 +25,7 @@ ol {
 .post {
     margin-bottom: 20px;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.05);
     border-radius: 10px;
 }
 
@@ -34,7 +34,7 @@ ol {
 }
 
 .post__name {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .post__author {
