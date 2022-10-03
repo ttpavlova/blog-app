@@ -1,5 +1,7 @@
 package com.example.demo2rest.entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,6 +14,7 @@ public class Post {
     private Integer id;
     private String name;
     private String text;
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date date;
 
     @ManyToOne

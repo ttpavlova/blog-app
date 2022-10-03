@@ -67,11 +67,12 @@ function Post(props) {
 
     const viewTemplate = (
         <div>
-            <p>{props.id}</p>
-            <p>{props.name}</p>
-            <p>{props.text}</p>
-            <p>{props.username}</p>
-            <div className={"btn-group" + (hasAccess() ? "" : " hidden")}>
+            {/* <p>{props.id}</p> */}
+            <p className="post__name mb-3">{props.name}</p>
+            <p className="post__text mb-3">{props.text}</p>
+            {/* <p>{props.date}</p> */}
+            <p className="post__author mb-0">{props.username}</p>
+            <div className={"btn-group" + (hasAccess() ? " mt-3" : " hidden")}>
                 <Button
                     type="button"
                     variant="primary"

@@ -10,7 +10,7 @@ ol {
 
 .container {
     padding: 10px 0;
-    background-color: rgb(159, 177, 211);
+    /* background-color: rgb(159, 177, 211); */
 }
 
 .btn-group.hidden {
@@ -31,4 +31,13 @@ ol {
 
 .post:last-child {
     margin-bottom: 0;
+}
+
+.post__name {
+    font-size: 1.2rem;
+}
+
+.post__author {
+    font-size: 0.9rem;
+    font-weight: 600;
 }

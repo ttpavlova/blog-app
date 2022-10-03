@@ -10,7 +10,7 @@ function AddPostForm(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        // alert("Hi");
+
         const newPost = { name, text };
         console.log(newPost);
         
@@ -36,6 +36,26 @@ function AddPostForm(props) {
         setText(e.target.value);
     }
 
+    function areInputsEmpty() {
+        if ((name === "") || (text === "")) {
+            return true;
+        }
+    }
+
+    function getFormattedData() {
+        // MySQL retrieves and displays TIMESTAMP values in ' YYYY-MM-DD hh:mm:ss ' format
+        const today = new Date();
+        console.log(today);
+        const year = today.getFullYear();
+        const month = today.getMonth();
+        const date = today.getDate();
+        const hours = today.getHours();
+        const minutes = today.getMinutes();
+        const seconds = today.getSeconds();
+
+        return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+    }
+
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicName">
@@ -45,6 +65,7 @@ function AddPostForm(props) {
                     placeholder="Enter name"
                     value={name}
                     onChange={handleChangeName}
+                    required
                 />
             </Form.Group>
 
@@ -53,9 +74,10 @@ function AddPostForm(props) {
                 <Form.Control
                     as="textarea"
                     placeholder="Enter text"
-                    style={{ height: '100px' }}
+                    style={{ height: '100px', resize: 'none' }}
                     value={text}
                     onChange={handleChangeText}
+                    required
                 />
             </Form.Group>
             {/* <label htmlFor="new-post-name-input">
@@ -82,7 +104,7 @@ function AddPostForm(props) {
             {/* <button type="submit">
                 Add
             </button> */}
-            <Button type="submit" variant="primary">Add</Button>
+            <Button type="submit" variant="primary" disabled={areInputsEmpty() ? "true" : ""}>Add</Button>
         </Form>
     );
 }
