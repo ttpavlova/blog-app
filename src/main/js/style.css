@@ -1,16 +1,5 @@
-h1 {
-    color: red;
-}
-
-ol {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
 .container {
     padding: 10px 0;
-    /* background-color: rgb(159, 177, 211); */
 }
 
 .post__buttons.hidden {

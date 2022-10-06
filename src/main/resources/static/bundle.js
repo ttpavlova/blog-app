@@ -2771,11 +2771,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Home */ "./src/main/js/components/Home.js");
-/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Login */ "./src/main/js/components/Login.js");
-/* harmony import */ var _components_Login__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_Login__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _components_NavigationBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/NavigationBar */ "./src/main/js/components/NavigationBar.js");
+/* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Home */ "./src/main/js/components/Home.js");
+/* harmony import */ var _components_NavigationBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/NavigationBar */ "./src/main/js/components/NavigationBar.js");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
 
@@ -2783,33 +2780,8 @@ __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/r
 
 
 
- // import '../resources/static/main.css';
-// import './style.css';
-
-
-
-
 function App() {
-  // const [currentUsername, setCurrentUsername] = useState("");
-  // async function getCurrentUsername() {
-  //   const res = await fetch("/api/username");
-  //   const currentUsername = await res.json();
-  //   console.log(currentUsername);
-  //   setCurrentUsername(currentUsername.username);
-  // }
-  // useEffect(() => {
-  //   getCurrentUsername();
-  // }, []);
-  return (
-    /*#__PURE__*/
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/login" element={<Login />} />
-    //     <Route path="/" element={<Home_post />} />
-    //   </Routes>
-    // </BrowserRouter>
-    react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_NavigationBar__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_2__["default"], null))
-  );
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_NavigationBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Home__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
 _c = App;
@@ -2893,8 +2865,6 @@ function AddPostForm(props) {
       _useState4 = _slicedToArray(_useState3, 2),
       text = _useState4[0],
       setText = _useState4[1];
-
-  var currentUsername = props.currentUsername;
 
   function handleSubmit(_x) {
     return _handleSubmit.apply(this, arguments);
@@ -2983,7 +2953,7 @@ function AddPostForm(props) {
     as: "textarea",
     placeholder: "Enter text",
     style: {
-      height: '100px',
+      height: '150px',
       resize: 'none'
     },
     value: text,
@@ -3381,47 +3351,6 @@ if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Pr
 
 /***/ }),
 
-/***/ "./src/main/js/components/Login.js":
-/*!*****************************************!*\
-  !*** ./src/main/js/components/Login.js ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-/* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
-__webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
-
-// import React from "react";
-// function Login() {
-//     return (
-//         <div>
-//         <h1>Login page</h1>
-//         <form name="login" action="/login" method="post">
-//             <input type="text" id="username" name="username" placeholder="Username" required autoFocus />
-//             <input type="password" id="password" name="password" placeholder="Password" required autoFocus />
-//             <button type="submit">Sign in</button>
-//         </form>
-//         </div>
-//     );
-// }
-// export default Login;
-
-const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
-const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
-	$ReactRefreshModuleId$
-);
-
-function $ReactRefreshModuleRuntime$(exports) {
-	if (false) {}
-}
-
-if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Promise) {
-	$ReactRefreshCurrentExports$.then($ReactRefreshModuleRuntime$);
-} else {
-	$ReactRefreshModuleRuntime$($ReactRefreshCurrentExports$);
-}
-
-/***/ }),
-
 /***/ "./src/main/js/components/NavigationBar.js":
 /*!*************************************************!*\
   !*** ./src/main/js/components/NavigationBar.js ***!
@@ -3506,7 +3435,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap/Button */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap/Form */ "./node_modules/react-bootstrap/esm/Form.js");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
 
@@ -3578,34 +3508,50 @@ function Post(props) {
     return false;
   }
 
-  var editingTemplate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+  var editingTemplate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"], {
     onSubmit: handleSubmit
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "post__author mb-3"
+  }, props.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    className: "mb-3",
+    controlId: "formBasicName"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
     type: "text",
     id: "new-name",
     value: newName,
     placeholder: props.name,
     onChange: handleChangeName
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "text",
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
+    className: "mb-3",
+    controlId: "formBasicText"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Text"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    as: "textarea",
     id: "new-text",
     value: newText,
     placeholder: props.text,
-    onChange: handleChangeRole
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "btn-group"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    onChange: handleChangeRole,
+    style: {
+      height: '150px',
+      resize: 'none'
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "post__footer d-flex justify-content-end"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "post__buttons mt-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "button",
     variant: "outline-primary",
+    size: "sm",
     className: "btn",
     onClick: function onClick() {
       return setEditing(false);
     }
-  }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    type: "submit",
+  }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "button",
     variant: "primary",
-    className: "btn"
-  }, "Save")));
+    size: "sm",
+    className: "btn ms-2"
+  }, "Save"))));
   var viewTemplate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "post__author mb-3"
   }, props.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
@@ -3616,7 +3562,7 @@ function Post(props) {
     className: "post__footer d-flex justify-content-end"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "post__buttons" + (hasAccess() ? " mt-3" : " hidden")
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "button",
     variant: "outline-primary",
     size: "sm",
@@ -3624,7 +3570,7 @@ function Post(props) {
     onClick: function onClick() {
       return hasAccess() ? setEditing(true) : alert("No access");
     }
-  }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "button",
     variant: "outline-danger",
     size: "sm",
@@ -8486,7 +8432,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "h1 {\r\n    color: red;\r\n}\r\n\r\nol {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.container {\r\n    padding: 10px 0;\r\n    /* background-color: rgb(159, 177, 211); */\r\n}\r\n\r\n.post__buttons.hidden {\r\n    display: none;\r\n}\r\n\r\n.avatar-img {\r\n    width: 50px;\r\n    height: 50px;\r\n}\r\n\r\n.post {\r\n    margin-bottom: 20px;\r\n    padding: 20px;\r\n    background-color: rgba(0, 0, 0, 0.05);\r\n    border-radius: 10px;\r\n}\r\n\r\n.post:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.post__name {\r\n    font-size: 1.4rem;\r\n}\r\n\r\n.post__author {\r\n    font-size: 0.9rem;\r\n    font-weight: 600;\r\n}", "",{"version":3,"sources":["webpack://./src/main/js/style.css"],"names":[],"mappings":"AAAA;IACI,UAAU;AACd;;AAEA;IACI,SAAS;IACT,UAAU;IACV,gBAAgB;AACpB;;AAEA;IACI,eAAe;IACf,0CAA0C;AAC9C;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,mBAAmB;IACnB,aAAa;IACb,qCAAqC;IACrC,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;AACpB","sourcesContent":["h1 {\r\n    color: red;\r\n}\r\n\r\nol {\r\n    margin: 0;\r\n    padding: 0;\r\n    list-style: none;\r\n}\r\n\r\n.container {\r\n    padding: 10px 0;\r\n    /* background-color: rgb(159, 177, 211); */\r\n}\r\n\r\n.post__buttons.hidden {\r\n    display: none;\r\n}\r\n\r\n.avatar-img {\r\n    width: 50px;\r\n    height: 50px;\r\n}\r\n\r\n.post {\r\n    margin-bottom: 20px;\r\n    padding: 20px;\r\n    background-color: rgba(0, 0, 0, 0.05);\r\n    border-radius: 10px;\r\n}\r\n\r\n.post:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.post__name {\r\n    font-size: 1.4rem;\r\n}\r\n\r\n.post__author {\r\n    font-size: 0.9rem;\r\n    font-weight: 600;\r\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".container {\r\n    padding: 10px 0;\r\n}\r\n\r\n.post__buttons.hidden {\r\n    display: none;\r\n}\r\n\r\n.avatar-img {\r\n    width: 50px;\r\n    height: 50px;\r\n}\r\n\r\n.post {\r\n    margin-bottom: 20px;\r\n    padding: 20px;\r\n    background-color: rgba(0, 0, 0, 0.05);\r\n    border-radius: 10px;\r\n}\r\n\r\n.post:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.post__name {\r\n    font-size: 1.4rem;\r\n}\r\n\r\n.post__author {\r\n    font-size: 0.9rem;\r\n    font-weight: 600;\r\n}", "",{"version":3,"sources":["webpack://./src/main/js/style.css"],"names":[],"mappings":"AAAA;IACI,eAAe;AACnB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,WAAW;IACX,YAAY;AAChB;;AAEA;IACI,mBAAmB;IACnB,aAAa;IACb,qCAAqC;IACrC,mBAAmB;AACvB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,iBAAiB;IACjB,gBAAgB;AACpB","sourcesContent":[".container {\r\n    padding: 10px 0;\r\n}\r\n\r\n.post__buttons.hidden {\r\n    display: none;\r\n}\r\n\r\n.avatar-img {\r\n    width: 50px;\r\n    height: 50px;\r\n}\r\n\r\n.post {\r\n    margin-bottom: 20px;\r\n    padding: 20px;\r\n    background-color: rgba(0, 0, 0, 0.05);\r\n    border-radius: 10px;\r\n}\r\n\r\n.post:last-child {\r\n    margin-bottom: 0;\r\n}\r\n\r\n.post__name {\r\n    font-size: 1.4rem;\r\n}\r\n\r\n.post__author {\r\n    font-size: 0.9rem;\r\n    font-weight: 600;\r\n}"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
