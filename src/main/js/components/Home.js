@@ -21,13 +21,13 @@ function Home(props) {
         currentUsername={currentUsername}
         editPost={editPost}
         deletePost={deletePost}
+        areInputsEmpty={areInputsEmpty}
         key={post.id}
       />
     ));
 
     async function editPost(id, name, text) {
       const updatedPost = { name, text };
-      console.log(updatedPost);
 
       await fetch('/api/posts/' + id, {
         method: "PUT",
@@ -44,7 +44,6 @@ function Home(props) {
         }
         return post;
       });
-      console.log(updatedPostList);
       setPosts(updatedPostList);
     }
 
@@ -58,8 +57,6 @@ function Home(props) {
       });
 
       const updatedPostList = posts.filter((post) => id !== post.id);
-      console.log(updatedPostList);
-      console.log(id);
       setPosts(updatedPostList);
   }
 
@@ -78,6 +75,12 @@ function Home(props) {
       setCurrentUsername(currentUsername.username);
     }
 
+    function areInputsEmpty(name, text) {
+      if ((name === "") || (text === "")) {
+          return true;
+      }
+    }
+
     useEffect(() => {
         getCurrentUsername();
         fetchData();
@@ -92,7 +95,11 @@ function Home(props) {
         <Row>
           <Col md={3} lg={4}></Col>
           <Col md={6} lg={4}>
-            <AddPostForm fetchData={fetchData} currentUsername={currentUsername} />
+            <AddPostForm
+              fetchData={fetchData}
+              currentUsername={currentUsername}
+              areInputsEmpty={areInputsEmpty}
+            />
             <br/>
             <div>{listPosts}</div>
           </Col>

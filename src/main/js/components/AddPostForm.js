@@ -11,7 +11,6 @@ function AddPostForm(props) {
         e.preventDefault();
 
         const newPost = { name, text };
-        console.log(newPost);
         
         await fetch('/api/posts', {
             method: "POST",
@@ -36,25 +35,19 @@ function AddPostForm(props) {
         setText(e.target.value);
     }
 
-    function areInputsEmpty() {
-        if ((name === "") || (text === "")) {
-            return true;
-        }
-    }
+    // function getFormattedData() {
+    //     // MySQL retrieves and displays TIMESTAMP values in ' YYYY-MM-DD hh:mm:ss ' format
+    //     const today = new Date();
+    //     console.log(today);
+    //     const year = today.getFullYear();
+    //     const month = today.getMonth();
+    //     const date = today.getDate();
+    //     const hours = today.getHours();
+    //     const minutes = today.getMinutes();
+    //     const seconds = today.getSeconds();
 
-    function getFormattedData() {
-        // MySQL retrieves and displays TIMESTAMP values in ' YYYY-MM-DD hh:mm:ss ' format
-        const today = new Date();
-        console.log(today);
-        const year = today.getFullYear();
-        const month = today.getMonth();
-        const date = today.getDate();
-        const hours = today.getHours();
-        const minutes = today.getMinutes();
-        const seconds = today.getSeconds();
-
-        return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
-    }
+    //     return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+    // }
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -81,7 +74,13 @@ function AddPostForm(props) {
                 />
             </Form.Group>
 
-            <Button type="submit" variant="primary" disabled={areInputsEmpty() ? true : ""}>Add</Button>
+            <Button
+                type="submit"
+                variant="primary"
+                disabled={props.areInputsEmpty(name, text) ? true : ""}
+            >
+                Add
+            </Button>
         </Form>
     );
 }

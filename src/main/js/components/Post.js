@@ -17,11 +17,15 @@ function Post(props) {
         setNewText(e.target.value);
     }
 
+    function handleCancel(e) {
+        setEditing(false);
+        setNewName(props.name);
+        setNewText(props.text);
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
         props.editPost(props.id, newName, newText);
-        // setNewName("");
-        // setNewText("");
         setEditing(false);
     }
 
@@ -44,22 +48,20 @@ function Post(props) {
         <Form onSubmit={handleSubmit}>
             <p className="post__author mb-3">{props.username}</p>
 
-            <Form.Group className="mb-3" controlId="formBasicName">
+            <Form.Group className="mb-3" controlId="new-name">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                     type="text"
-                    id="new-name"
                     value={newName}
                     placeholder={props.name}
                     onChange={handleChangeName}
                 />
             </Form.Group>
             
-            <Form.Group className="mb-3" controlId="formBasicText">
+            <Form.Group className="mb-3" controlId="new-text">
                 <Form.Label>Text</Form.Label>
                 <Form.Control
                     as="textarea"
-                    id="new-text"
                     value={newText}
                     placeholder={props.text}
                     onChange={handleChangeRole}
@@ -74,15 +76,16 @@ function Post(props) {
                         variant="outline-primary"
                         size="sm"
                         className="btn"
-                        onClick={() => setEditing(false)}
+                        onClick={handleCancel}
                     >
                         Cancel
                     </Button>
                     <Button
-                        type="button"
+                        type="submit"
                         variant="primary"
                         size="sm"
                         className="btn ms-2"
+                        disabled={props.areInputsEmpty(newName, newText) ? true : ""}
                     >
                         Save
                     </Button>
@@ -93,11 +96,10 @@ function Post(props) {
 
     const viewTemplate = (
         <div>
-            {/* <p>{props.id}</p> */}
             <p className="post__author mb-3">{props.username}</p>
             <p className="post__name mb-3">{props.name}</p>
             <p className="post__text mb-0">{props.text}</p>
-            {/* <p>{props.date}</p> */}
+            
             <div className="post__footer d-flex justify-content-end">
                 <div className={"post__buttons" + (hasAccess() ? " mt-3" : " hidden")}>
                     <Button
