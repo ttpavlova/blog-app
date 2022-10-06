@@ -6,7 +6,6 @@ import Form from 'react-bootstrap/Form';
 function AddPostForm(props) {
     const [name, setName] = useState("");
     const [text, setText] = useState("");
-    const currentUsername = props.currentUsername;
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -75,36 +74,13 @@ function AddPostForm(props) {
                 <Form.Control
                     as="textarea"
                     placeholder="Enter text"
-                    style={{ height: '100px', resize: 'none' }}
+                    style={{ height: '150px', resize: 'none' }}
                     value={text}
                     onChange={handleChangeText}
                     required
                 />
             </Form.Group>
-            {/* <label htmlFor="new-post-name-input">
-                Add a new post
-            </label>
-            <input
-                type="text"
-                id="new-post-name-input"
-                name="text"
-                placeholder="name"
-                autoComplete="off"
-                value={name}
-                onChange={handleChangeName}
-            />
-            <input
-                type="text"
-                id="new-post-text-input"
-                name="text"
-                placeholder="text"
-                value={text}
-                autoComplete="off"
-                onChange={handleChangeText}
-            /> */}
-            {/* <button type="submit">
-                Add
-            </button> */}
+
             <Button type="submit" variant="primary" disabled={areInputsEmpty() ? true : ""}>Add</Button>
         </Form>
     );

@@ -41,28 +41,54 @@ function Post(props) {
     }
 
     const editingTemplate = (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                id="new-name"
-                value={newName}
-                placeholder={props.name}
-                onChange={handleChangeName}
-            >
-            </input>
-            <input
-                type="text"
-                id="new-text"
-                value={newText}
-                placeholder={props.text}
-                onChange={handleChangeRole}
-            >
-            </input>
-            <div className="btn-group">
-                <Button type="button" variant="outline-primary" className="btn" onClick={() => setEditing(false)}>Cancel</Button>
-                <Button type="submit" variant="primary" className="btn">Save</Button>
+        <Form onSubmit={handleSubmit}>
+            <p className="post__author mb-3">{props.username}</p>
+
+            <Form.Group className="mb-3" controlId="formBasicName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                    type="text"
+                    id="new-name"
+                    value={newName}
+                    placeholder={props.name}
+                    onChange={handleChangeName}
+                />
+            </Form.Group>
+            
+            <Form.Group className="mb-3" controlId="formBasicText">
+                <Form.Label>Text</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    id="new-text"
+                    value={newText}
+                    placeholder={props.text}
+                    onChange={handleChangeRole}
+                    style={{ height: '150px', resize: 'none' }}
+                />
+            </Form.Group>
+
+            <div className="post__footer d-flex justify-content-end">
+                <div className="post__buttons mt-3">
+                    <Button
+                        type="button"
+                        variant="outline-primary"
+                        size="sm"
+                        className="btn"
+                        onClick={() => setEditing(false)}
+                    >
+                        Cancel
+                    </Button>
+                    <Button
+                        type="button"
+                        variant="primary"
+                        size="sm"
+                        className="btn ms-2"
+                    >
+                        Save
+                    </Button>
+                </div>
             </div>
-        </form>
+        </Form>
     );
 
     const viewTemplate = (
