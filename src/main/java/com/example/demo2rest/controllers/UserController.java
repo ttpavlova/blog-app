@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping(path = "/username")
+    @GetMapping(path = "/user")
     @ResponseBody
     User getCurrentUser(Principal principal) {
         String currentUsername = principal.getName();

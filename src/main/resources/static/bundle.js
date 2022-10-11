@@ -3051,6 +3051,11 @@ function Home(props) {
       currentUsername = _useState4[0],
       setCurrentUsername = _useState4[1];
 
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      currentRoles = _useState6[0],
+      setCurrentRoles = _useState6[1];
+
   var listPosts = posts.map(function (post) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Post__WEBPACK_IMPORTED_MODULE_2__["default"], {
       id: post.id,
@@ -3059,6 +3064,7 @@ function Home(props) {
       date: post.date,
       username: post.user.username,
       currentUsername: currentUsername,
+      currentRoles: currentRoles,
       editPost: editPost,
       deletePost: deletePost,
       areInputsEmpty: areInputsEmpty,
@@ -3183,19 +3189,19 @@ function Home(props) {
     return _fetchData.apply(this, arguments);
   }
 
-  function getCurrentUsername() {
-    return _getCurrentUsername.apply(this, arguments);
+  function getCurrentUserData() {
+    return _getCurrentUserData.apply(this, arguments);
   }
 
-  function _getCurrentUsername() {
-    _getCurrentUsername = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
-      var res, currentUsername;
+  function _getCurrentUserData() {
+    _getCurrentUserData = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+      var res, currentUser;
       return _regeneratorRuntime().wrap(function _callee4$(_context4) {
         while (1) {
           switch (_context4.prev = _context4.next) {
             case 0:
               _context4.next = 2;
-              return fetch("/api/username");
+              return fetch("/api/user");
 
             case 2:
               res = _context4.sent;
@@ -3203,17 +3209,18 @@ function Home(props) {
               return res.json();
 
             case 5:
-              currentUsername = _context4.sent;
-              setCurrentUsername(currentUsername.username);
+              currentUser = _context4.sent;
+              setCurrentUsername(currentUser.username);
+              setCurrentRoles(currentUser.roles);
 
-            case 7:
+            case 8:
             case "end":
               return _context4.stop();
           }
         }
       }, _callee4);
     }));
-    return _getCurrentUsername.apply(this, arguments);
+    return _getCurrentUserData.apply(this, arguments);
   }
 
   function areInputsEmpty(title, text) {
@@ -3223,7 +3230,7 @@ function Home(props) {
   }
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    getCurrentUsername();
+    getCurrentUserData();
     fetchData();
   }, []);
 
@@ -3260,7 +3267,7 @@ function Home(props) {
   }))));
 }
 
-_s2(Home, "aZBtopivjRGiEvE9DPrkBPLOMo0=");
+_s2(Home, "gYUtl7h50rjhKpvUpfwAP2PmKBg=");
 
 _c = Home;
 /* harmony default export */ __webpack_exports__["default"] = (Home);
@@ -3427,7 +3434,11 @@ function Post(props) {
   }
 
   function isAdmin() {
-    if (props.currentUsername === "admin") {
+    var found = props.currentRoles.find(function (role) {
+      return role.name === "ROLE_ADMIN";
+    });
+
+    if (found) {
       return true;
     }
   } // check if the authorized user has access to edit and delete functions

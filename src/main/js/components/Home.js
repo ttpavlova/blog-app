@@ -10,6 +10,7 @@ import Avatar from "./Avatar";
 function Home(props) {
     const [posts, setPosts] = useState([]);
     const [currentUsername, setCurrentUsername] = useState("");
+    const [currentRoles, setCurrentRoles] = useState([]);
 
     const listPosts = posts.map((post) => (
       <Post
@@ -19,6 +20,7 @@ function Home(props) {
         date={post.date}
         username={post.user.username}
         currentUsername={currentUsername}
+        currentRoles={currentRoles}
         editPost={editPost}
         deletePost={deletePost}
         areInputsEmpty={areInputsEmpty}
@@ -69,10 +71,12 @@ function Home(props) {
       setPosts(data);
   }
 
-    async function getCurrentUsername() {
-      const res = await fetch("/api/username");
-      const currentUsername = await res.json();
-      setCurrentUsername(currentUsername.username);
+    async function getCurrentUserData() {
+      const res = await fetch("/api/user");
+      const currentUser = await res.json();
+
+      setCurrentUsername(currentUser.username);
+      setCurrentRoles(currentUser.roles);
     }
 
     function areInputsEmpty(title, text) {
@@ -82,7 +86,7 @@ function Home(props) {
     }
 
     useEffect(() => {
-        getCurrentUsername();
+        getCurrentUserData();
         fetchData();
     }, []);
 

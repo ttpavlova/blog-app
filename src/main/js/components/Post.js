@@ -30,7 +30,9 @@ function Post(props) {
     }
 
     function isAdmin() {
-        if (props.currentUsername === "admin") {
+        const found = props.currentRoles.find(role => role.name === "ROLE_ADMIN");
+
+        if (found) {
             return true;
         }
     }
