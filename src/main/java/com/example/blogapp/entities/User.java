@@ -1,4 +1,4 @@
-package com.example.demo2rest.entities;
+package com.example.blogapp.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

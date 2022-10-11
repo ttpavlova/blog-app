@@ -1,7 +1,7 @@
-package com.example.demo2rest.controllers;
+package com.example.blogapp.controllers;
 
-import com.example.demo2rest.entities.User;
-import com.example.demo2rest.repositories.UserRepository;
+import com.example.blogapp.entities.User;
+import com.example.blogapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

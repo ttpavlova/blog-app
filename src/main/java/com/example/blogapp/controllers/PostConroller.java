@@ -1,10 +1,10 @@
-package com.example.demo2rest.controllers;
+package com.example.blogapp.controllers;
 
-import com.example.demo2rest.entities.Post;
-import com.example.demo2rest.entities.User;
-import com.example.demo2rest.exceptions.PostNotFoundException;
-import com.example.demo2rest.repositories.PostRepository;
-import com.example.demo2rest.repositories.UserRepository;
+import com.example.blogapp.entities.Post;
+import com.example.blogapp.entities.User;
+import com.example.blogapp.exceptions.PostNotFoundException;
+import com.example.blogapp.repositories.PostRepository;
+import com.example.blogapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.*;

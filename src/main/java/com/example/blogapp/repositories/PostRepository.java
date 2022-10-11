@@ -1,6 +1,6 @@
-package com.example.demo2rest.repositories;
+package com.example.blogapp.repositories;
 
-import com.example.demo2rest.entities.Post;
+import com.example.blogapp.entities.Post;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;

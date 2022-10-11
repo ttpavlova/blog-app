@@ -1,6 +1,6 @@
-package com.example.demo2rest.advices;
+package com.example.blogapp.advices;
 
-import com.example.demo2rest.exceptions.PostNotFoundException;
+import com.example.blogapp.exceptions.PostNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

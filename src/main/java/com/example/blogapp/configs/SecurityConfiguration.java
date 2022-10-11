@@ -1,6 +1,6 @@
-package com.example.demo2rest.configs;
+package com.example.blogapp.configs;
 
-import com.example.demo2rest.services.UserService;
+import com.example.blogapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

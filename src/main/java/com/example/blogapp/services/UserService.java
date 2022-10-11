@@ -1,8 +1,8 @@
-package com.example.demo2rest.services;
+package com.example.blogapp.services;
 
-import com.example.demo2rest.entities.Role;
-import com.example.demo2rest.entities.User;
-import com.example.demo2rest.repositories.UserRepository;
+import com.example.blogapp.entities.Role;
+import com.example.blogapp.entities.User;
+import com.example.blogapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
