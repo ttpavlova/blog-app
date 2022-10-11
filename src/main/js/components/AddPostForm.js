@@ -35,20 +35,6 @@ function AddPostForm(props) {
         setText(e.target.value);
     }
 
-    // function getFormattedData() {
-    //     // MySQL retrieves and displays TIMESTAMP values in ' YYYY-MM-DD hh:mm:ss ' format
-    //     const today = new Date();
-    //     console.log(today);
-    //     const year = today.getFullYear();
-    //     const month = today.getMonth();
-    //     const date = today.getDate();
-    //     const hours = today.getHours();
-    //     const minutes = today.getMinutes();
-    //     const seconds = today.getSeconds();
-
-    //     return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
-    // }
-
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicName">

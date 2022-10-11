@@ -25,7 +25,7 @@ public class PostConroller {
 
     @GetMapping(path = "/posts")
     public @ResponseBody Iterable<Post> getAllPosts() {
-        // return a JSON or XML with the posts
+        // return a JSON with the posts
         return postRepository.findAll();
     }
 
@@ -36,11 +36,6 @@ public class PostConroller {
         newPost.setUser(user);
         return postRepository.save(newPost);
     }
-
-    /*@PostMapping(path = "/posts")
-    public Post newPost(@RequestBody Post newPost) {
-        return postRepository.save(newPost);
-    }*/
 
     @GetMapping(path = "/posts/{id}")
     EntityModel<Post> one(@PathVariable Integer id) {

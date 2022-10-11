@@ -10,15 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties(value = {"password", "email", "posts"})
+@JsonIgnoreProperties(value = {"password", "email"})
 public class User {
-
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_user;
-    private String first_name;
-    private String last_name;*/
-    /*public static final PasswordEncoder PASSWORD_ENCODER = new BCryptPasswordEncoder();*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,9 +26,6 @@ public class User {
     private  String password;
 
     private String email;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Post> posts;
 
     @ManyToMany
     @JoinTable(name = "users_roles",
@@ -100,14 +90,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
     }
 
     public Collection<Role> getRoles() {
