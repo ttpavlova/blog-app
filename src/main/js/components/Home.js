@@ -14,7 +14,7 @@ function Home(props) {
     const listPosts = posts.map((post) => (
       <Post
         id={post.id}
-        name={post.name}
+        title={post.title}
         text={post.text}
         date={post.date}
         username={post.user.username}
@@ -26,8 +26,8 @@ function Home(props) {
       />
     ));
 
-    async function editPost(id, name, text) {
-      const updatedPost = { name, text };
+    async function editPost(id, title, text) {
+      const updatedPost = { title, text };
 
       await fetch('/api/posts/' + id, {
         method: "PUT",
@@ -40,7 +40,7 @@ function Home(props) {
 
       const updatedPostList = posts.map((post) => {
         if (id === post.id) {
-          return {...post, name: name, text: text};
+          return {...post, title: title, text: text};
         }
         return post;
       });
@@ -75,8 +75,8 @@ function Home(props) {
       setCurrentUsername(currentUsername.username);
     }
 
-    function areInputsEmpty(name, text) {
-      if ((name === "") || (text === "")) {
+    function areInputsEmpty(title, text) {
+      if ((title === "") || (text === "")) {
           return true;
       }
     }

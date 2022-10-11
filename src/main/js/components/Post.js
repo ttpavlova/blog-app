@@ -6,11 +6,11 @@ import Form from 'react-bootstrap/Form';
 function Post(props) {
 
     const [isEditing, setEditing] = useState(false);
-    const [newName, setNewName] = useState(props.name);
+    const [newTitle, setNewTitle] = useState(props.title);
     const [newText, setNewText] = useState(props.text);
 
-    function handleChangeName(e) {
-        setNewName(e.target.value);
+    function handleChangeTitle(e) {
+        setNewTitle(e.target.value);
     }
 
     function handleChangeRole(e) {
@@ -19,13 +19,13 @@ function Post(props) {
 
     function handleCancel(e) {
         setEditing(false);
-        setNewName(props.name);
+        setNewTitle(props.title);
         setNewText(props.text);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        props.editPost(props.id, newName, newText);
+        props.editPost(props.id, newTitle, newText);
         setEditing(false);
     }
 
@@ -48,13 +48,13 @@ function Post(props) {
         <Form onSubmit={handleSubmit}>
             <p className="post__author mb-3">{props.username}</p>
 
-            <Form.Group className="mb-3" controlId="new-name">
-                <Form.Label>Name</Form.Label>
+            <Form.Group className="mb-3" controlId="new-title">
+                <Form.Label>Title</Form.Label>
                 <Form.Control
                     type="text"
-                    value={newName}
-                    placeholder={props.name}
-                    onChange={handleChangeName}
+                    value={newTitle}
+                    placeholder={props.title}
+                    onChange={handleChangeTitle}
                 />
             </Form.Group>
             
@@ -85,7 +85,7 @@ function Post(props) {
                         variant="primary"
                         size="sm"
                         className="btn ms-2"
-                        disabled={props.areInputsEmpty(newName, newText) ? true : ""}
+                        disabled={props.areInputsEmpty(newTitle, newText) ? true : ""}
                     >
                         Save
                     </Button>
@@ -97,7 +97,7 @@ function Post(props) {
     const viewTemplate = (
         <div>
             <p className="post__author mb-3">{props.username}</p>
-            <p className="post__name mb-3">{props.name}</p>
+            <p className="post__title mb-3">{props.title}</p>
             <p className="post__text mb-0">{props.text}</p>
             
             <div className="post__footer d-flex justify-content-end">

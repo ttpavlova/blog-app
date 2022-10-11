@@ -1,21 +1,19 @@
 package com.example.demo2rest.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties(value = {"password", "email"})
+@JsonIgnoreProperties(value = {"password", "email", "posts"})
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String first_name;
 
@@ -26,6 +24,9 @@ public class User {
     private  String password;
 
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Post> posts;
 
     @ManyToMany
     @JoinTable(name = "users_roles",
@@ -44,11 +45,11 @@ public class User {
         this.email = email;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -90,6 +91,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
     }
 
     public Collection<Role> getRoles() {

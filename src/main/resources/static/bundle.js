@@ -2815,8 +2815,8 @@ function AddPostForm(props) {
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      name = _useState2[0],
-      setName = _useState2[1];
+      title = _useState2[0],
+      setTitle = _useState2[1];
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -2836,7 +2836,7 @@ function AddPostForm(props) {
             case 0:
               e.preventDefault();
               newPost = {
-                name: name,
+                title: title,
                 text: text
               };
               _context.next = 4;
@@ -2851,7 +2851,7 @@ function AddPostForm(props) {
 
             case 4:
               props.fetchData();
-              setName("");
+              setTitle("");
               setText("");
 
             case 7:
@@ -2864,8 +2864,8 @@ function AddPostForm(props) {
     return _handleSubmit.apply(this, arguments);
   }
 
-  function handleChangeName(e) {
-    setName(e.target.value);
+  function handleChangeTitle(e) {
+    setTitle(e.target.value);
   }
 
   function handleChangeText(e) {
@@ -2876,12 +2876,12 @@ function AddPostForm(props) {
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
     className: "mb-3",
-    controlId: "formBasicName"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    controlId: "formBasicTitle"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
     type: "text",
-    placeholder: "Enter name",
-    value: name,
-    onChange: handleChangeName,
+    placeholder: "Enter title",
+    value: title,
+    onChange: handleChangeTitle,
     required: true
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
     className: "mb-3",
@@ -2899,11 +2899,11 @@ function AddPostForm(props) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "submit",
     variant: "primary",
-    disabled: props.areInputsEmpty(name, text) ? true : ""
+    disabled: props.areInputsEmpty(title, text) ? true : ""
   }, "Add"));
 }
 
-_s2(AddPostForm, "gdOe+8QdYKQc+M4VhGVP4GKEkEE=");
+_s2(AddPostForm, "CK0Xj8E/e+j/Ei6ec+EST3ick6k=");
 
 _c = AddPostForm;
 /* harmony default export */ __webpack_exports__["default"] = (AddPostForm);
@@ -3054,7 +3054,7 @@ function Home(props) {
   var listPosts = posts.map(function (post) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Post__WEBPACK_IMPORTED_MODULE_2__["default"], {
       id: post.id,
-      name: post.name,
+      title: post.title,
       text: post.text,
       date: post.date,
       username: post.user.username,
@@ -3071,14 +3071,14 @@ function Home(props) {
   }
 
   function _editPost() {
-    _editPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id, name, text) {
+    _editPost = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id, title, text) {
       var updatedPost, updatedPostList;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               updatedPost = {
-                name: name,
+                title: title,
                 text: text
               };
               _context.next = 3;
@@ -3095,7 +3095,7 @@ function Home(props) {
               updatedPostList = posts.map(function (post) {
                 if (id === post.id) {
                   return _objectSpread(_objectSpread({}, post), {}, {
-                    name: name,
+                    title: title,
                     text: text
                   });
                 }
@@ -3216,8 +3216,8 @@ function Home(props) {
     return _getCurrentUsername.apply(this, arguments);
   }
 
-  function areInputsEmpty(name, text) {
-    if (name === "" || text === "") {
+  function areInputsEmpty(title, text) {
+    if (title === "" || text === "") {
       return true;
     }
   }
@@ -3396,18 +3396,18 @@ function Post(props) {
       isEditing = _useState2[0],
       setEditing = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.name),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.title),
       _useState4 = _slicedToArray(_useState3, 2),
-      newName = _useState4[0],
-      setNewName = _useState4[1];
+      newTitle = _useState4[0],
+      setNewTitle = _useState4[1];
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(props.text),
       _useState6 = _slicedToArray(_useState5, 2),
       newText = _useState6[0],
       setNewText = _useState6[1];
 
-  function handleChangeName(e) {
-    setNewName(e.target.value);
+  function handleChangeTitle(e) {
+    setNewTitle(e.target.value);
   }
 
   function handleChangeRole(e) {
@@ -3416,13 +3416,13 @@ function Post(props) {
 
   function handleCancel(e) {
     setEditing(false);
-    setNewName(props.name);
+    setNewTitle(props.title);
     setNewText(props.text);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.editPost(props.id, newName, newText);
+    props.editPost(props.id, newTitle, newText);
     setEditing(false);
   }
 
@@ -3447,12 +3447,12 @@ function Post(props) {
     className: "post__author mb-3"
   }, props.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
     className: "mb-3",
-    controlId: "new-name"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
+    controlId: "new-title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Label, null, "Title"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Control, {
     type: "text",
-    value: newName,
-    placeholder: props.name,
-    onChange: handleChangeName
+    value: newTitle,
+    placeholder: props.title,
+    onChange: handleChangeTitle
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_Form__WEBPACK_IMPORTED_MODULE_1__["default"].Group, {
     className: "mb-3",
     controlId: "new-text"
@@ -3480,13 +3480,13 @@ function Post(props) {
     variant: "primary",
     size: "sm",
     className: "btn ms-2",
-    disabled: props.areInputsEmpty(newName, newText) ? true : ""
+    disabled: props.areInputsEmpty(newTitle, newText) ? true : ""
   }, "Save"))));
   var viewTemplate = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "post__author mb-3"
   }, props.username), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "post__name mb-3"
-  }, props.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "post__title mb-3"
+  }, props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "post__text mb-0"
   }, props.text), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "post__footer d-flex justify-content-end"
@@ -3514,7 +3514,7 @@ function Post(props) {
   }, isEditing ? editingTemplate : viewTemplate);
 }
 
-_s2(Post, "qqW1Bcxc0MkaxWiN0WkzDeEn86M=");
+_s2(Post, "yJw+hlf6dFSpruwvUBY0Wo2pCoI=");
 
 _c = Post;
 /* harmony default export */ __webpack_exports__["default"] = (Post);

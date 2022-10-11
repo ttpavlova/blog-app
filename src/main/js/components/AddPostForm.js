@@ -4,13 +4,13 @@ import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form';
 
 function AddPostForm(props) {
-    const [name, setName] = useState("");
+    const [title, setTitle] = useState("");
     const [text, setText] = useState("");
 
     async function handleSubmit(e) {
         e.preventDefault();
 
-        const newPost = { name, text };
+        const newPost = { title, text };
         
         await fetch('/api/posts', {
             method: "POST",
@@ -23,12 +23,12 @@ function AddPostForm(props) {
 
         props.fetchData();
 
-        setName("");
+        setTitle("");
         setText("");
     }
 
-    function handleChangeName(e) {
-        setName(e.target.value);
+    function handleChangeTitle(e) {
+        setTitle(e.target.value);
     }
 
     function handleChangeText(e) {
@@ -37,13 +37,13 @@ function AddPostForm(props) {
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Label>Name</Form.Label>
+            <Form.Group className="mb-3" controlId="formBasicTitle">
+                <Form.Label>Title</Form.Label>
                 <Form.Control
                     type="text"
-                    placeholder="Enter name"
-                    value={name}
-                    onChange={handleChangeName}
+                    placeholder="Enter title"
+                    value={title}
+                    onChange={handleChangeTitle}
                     required
                 />
             </Form.Group>
@@ -63,7 +63,7 @@ function AddPostForm(props) {
             <Button
                 type="submit"
                 variant="primary"
-                disabled={props.areInputsEmpty(name, text) ? true : ""}
+                disabled={props.areInputsEmpty(title, text) ? true : ""}
             >
                 Add
             </Button>

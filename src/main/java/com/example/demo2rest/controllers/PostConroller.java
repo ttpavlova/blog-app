@@ -50,7 +50,7 @@ public class PostConroller {
     Post replacePost(@RequestBody Post newPost, @PathVariable Integer id) {
         return postRepository.findById(id)
                 .map(post -> {
-                    post.setName(newPost.getName());
+                    post.setTitle(newPost.getTitle());
                     post.setText(newPost.getText());
                     return postRepository.save(post);
                 })

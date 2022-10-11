@@ -12,21 +12,21 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    private String title;
     private String text;
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date date;
 
     @ManyToOne
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     Post() {
 
     }
 
-    Post(String name, String text, User user) {
-        this.name = name;
+    Post(String title, String text, User user) {
+        this.title = title;
         this.text = text;
         this.user = user;
     }
@@ -39,12 +39,12 @@ public class Post {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getText() {
