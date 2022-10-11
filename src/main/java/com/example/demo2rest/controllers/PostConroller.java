@@ -54,10 +54,7 @@ public class PostConroller {
                     post.setText(newPost.getText());
                     return postRepository.save(post);
                 })
-                .orElseGet(() -> {
-                    newPost.setId(id);
-                    return postRepository.save(newPost);
-                });
+                .orElseThrow(() -> new PostNotFoundException(id));
     }
 
     @DeleteMapping(path = "/posts/{id}")
