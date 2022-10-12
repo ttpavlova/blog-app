@@ -12,7 +12,8 @@ function Home(props) {
     const [currentUsername, setCurrentUsername] = useState("");
     const [currentRoles, setCurrentRoles] = useState([]);
 
-    const listPosts = posts.map((post) => (
+    const reverted = [...posts].reverse();
+    const listPosts = reverted.map((post) => (
       <Post
         id={post.id}
         title={post.title}
