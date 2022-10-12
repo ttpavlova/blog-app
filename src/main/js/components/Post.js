@@ -29,6 +29,11 @@ function Post(props) {
         setEditing(false);
     }
 
+    function handleDelete(id) {
+        props.setShowModal(true);
+        props.setPostIdToDelete(id);
+    }
+
     function isAdmin() {
         const found = props.currentRoles.find(role => role.name === "ROLE_ADMIN");
 
@@ -118,7 +123,7 @@ function Post(props) {
                         variant="outline-danger"
                         size="sm"
                         className="btn ms-2"
-                        onClick={() => hasAccess() ? props.deletePost(props.id) : alert("No access")}
+                        onClick={() => hasAccess() ? handleDelete(props.id) : alert("No access")}
                     >
                         Delete
                     </Button>

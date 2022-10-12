@@ -6,11 +6,16 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Avatar from "./Avatar";
+import ConfirmModal from "./ConfirmModal";
 
 function Home(props) {
     const [posts, setPosts] = useState([]);
     const [currentUsername, setCurrentUsername] = useState("");
     const [currentRoles, setCurrentRoles] = useState([]);
+
+    // delete confirmation modal
+    const [showModal, setShowModal] = useState(false);
+    const [postIdToDelete, setPostIdToDelete] = useState(null);
 
     const reverted = [...posts].reverse();
     const listPosts = reverted.map((post) => (
@@ -25,6 +30,8 @@ function Home(props) {
         editPost={editPost}
         deletePost={deletePost}
         areInputsEmpty={areInputsEmpty}
+        setShowModal={setShowModal}
+        setPostIdToDelete={setPostIdToDelete}
         key={post.id}
       />
     ));
@@ -100,6 +107,13 @@ function Home(props) {
         <Row>
           <Col md={3} lg={4}></Col>
           <Col md={6} lg={4}>
+            <ConfirmModal
+              showModal={showModal}
+              setShowModal={setShowModal}
+              deletePost={deletePost}
+              postIdToDelete={postIdToDelete}
+              setPostIdToDelete={setPostIdToDelete}
+            />
             <AddPostForm
               fetchData={fetchData}
               currentUsername={currentUsername}
