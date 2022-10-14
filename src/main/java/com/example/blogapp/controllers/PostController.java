@@ -19,7 +19,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping(path = "/api")
-public class PostConroller {
+public class PostController {
 
     @Autowired
     private PostRepository postRepository;
@@ -31,11 +31,11 @@ public class PostConroller {
 
         List<EntityModel<Post>> posts = postRepository.findAll().stream()
                 .map(post -> EntityModel.of(post,
-                        linkTo(methodOn(PostConroller.class).getOnePost(post.getId())).withSelfRel(),
-                        linkTo(methodOn(PostConroller.class).getAllPosts()).withRel("posts")))
+                        linkTo(methodOn(PostController.class).getOnePost(post.getId())).withSelfRel(),
+                        linkTo(methodOn(PostController.class).getAllPosts()).withRel("posts")))
                 .collect(Collectors.toList());
 
-        return CollectionModel.of(posts, linkTo(methodOn(PostConroller.class).getAllPosts()).withSelfRel());
+        return CollectionModel.of(posts, linkTo(methodOn(PostController.class).getAllPosts()).withSelfRel());
     }
 
     @PostMapping(path = "/posts")
@@ -52,8 +52,8 @@ public class PostConroller {
                 .orElseThrow(() -> new PostNotFoundException(id));
 
         return EntityModel.of(post,
-                linkTo(methodOn(PostConroller.class).getOnePost(id)).withSelfRel(),
-                linkTo(methodOn(PostConroller.class).getAllPosts()).withRel("posts"));
+                linkTo(methodOn(PostController.class).getOnePost(id)).withSelfRel(),
+                linkTo(methodOn(PostController.class).getAllPosts()).withRel("posts"));
     }
 
     @PutMapping(path = "/posts/{id}")
