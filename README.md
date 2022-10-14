@@ -2,8 +2,6 @@
 
 A blog application built with React + Spring Boot + MySQL.
 
-## Demo
-
 ## Features
 
 - authorization;
@@ -12,35 +10,6 @@ A blog application built with React + Spring Boot + MySQL.
 - administrators can edit and delete all posts.
 
 ## Overview
-
-<table>
-  <tr>
-    <td>
-      <img src="/showcase/img/1. sign_in.png" alt="Sign in page">
-      <p align="center">Sign in page</p>
-    </td>
-    <td>
-      <img src="/showcase/img/2. homepage.png" alt="Homepage">
-      <p align="center">Homepage</p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2">
-      <img src="/showcase/img/3. new_post.png" alt="After creating a new post">
-      <p align="center">After creating a new post</p>
-    </td>
-  </tr>
-  <tr>
-     <td>
-      <img src="/showcase/img/4. editing_post.png" alt="Post editing mode">
-      <p align="center">Post editing mode</p>
-    </td>
-    <td>
-      <img src="/showcase/img/5. confirmation_dialog.png" alt="Confirmation dialog">
-      <p align="center">Confirmation dialog</p>
-    </td>
-  </tr>
-</table>
 
 <img src="/showcase/img/1. sign_in.png" alt="Sign in page">
 <p align="center">Sign in page</p>
@@ -57,4 +26,8 @@ A blog application built with React + Spring Boot + MySQL.
 <img src="/showcase/img/5. confirmation_dialog.png" alt="Confirmation dialog">
 <p align="center">Confirmation dialog</p>
 
-## Build
+## Credits
+
+Guide: Building REST services with Spring https://spring.io/guides/tutorials/rest/
+
+Guide: React.js and Spring Data REST https://spring.io/guides/tutorials/react-and-spring-data-rest/
