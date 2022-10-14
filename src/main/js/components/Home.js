@@ -36,6 +36,16 @@ function Home(props) {
       />
     ));
 
+    async function getAllPosts() {
+      const res = await fetch(
+          `/api/posts`
+      );
+
+      const data = await res.json();
+      const posts = data["_embedded"]["postList"];
+      setPosts(posts);
+    }
+
     async function editPost(id, title, text) {
       const updatedPost = { title, text };
 
@@ -68,16 +78,7 @@ function Home(props) {
 
       const updatedPostList = posts.filter((post) => id !== post.id);
       setPosts(updatedPostList);
-  }
-
-    async function fetchData() {
-      const res = await fetch(
-          `/api/posts`
-      );
-
-      const data = await res.json();
-      setPosts(data);
-  }
+    }
 
     async function getCurrentUserData() {
       const res = await fetch("/api/user");
@@ -95,7 +96,7 @@ function Home(props) {
 
     useEffect(() => {
         getCurrentUserData();
-        fetchData();
+        getAllPosts();
     }, []);
 
     if (!posts) {
@@ -115,7 +116,7 @@ function Home(props) {
               setPostIdToDelete={setPostIdToDelete}
             />
             <AddPostForm
-              fetchData={fetchData}
+              getAllPosts={getAllPosts}
               currentUsername={currentUsername}
               areInputsEmpty={areInputsEmpty}
             />

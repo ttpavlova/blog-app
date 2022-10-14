@@ -6,10 +6,13 @@ import com.example.blogapp.exceptions.PostNotFoundException;
 import com.example.blogapp.repositories.PostRepository;
 import com.example.blogapp.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -24,9 +27,15 @@ public class PostConroller {
     private UserRepository userRepository;
 
     @GetMapping(path = "/posts")
-    public @ResponseBody Iterable<Post> getAllPosts() {
-        // return a JSON with the posts
-        return postRepository.findAll();
+    CollectionModel<EntityModel<Post>> getAllPosts() {
+
+        List<EntityModel<Post>> posts = postRepository.findAll().stream()
+                .map(post -> EntityModel.of(post,
+                        linkTo(methodOn(PostConroller.class).getOnePost(post.getId())).withSelfRel(),
+                        linkTo(methodOn(PostConroller.class).getAllPosts()).withRel("posts")))
+                .collect(Collectors.toList());
+
+        return CollectionModel.of(posts, linkTo(methodOn(PostConroller.class).getAllPosts()).withSelfRel());
     }
 
     @PostMapping(path = "/posts")
@@ -38,12 +47,13 @@ public class PostConroller {
     }
 
     @GetMapping(path = "/posts/{id}")
-    EntityModel<Post> one(@PathVariable Integer id) {
+    EntityModel<Post> getOnePost(@PathVariable Integer id) {
         Post post = postRepository.findById(id)
                 .orElseThrow(() -> new PostNotFoundException(id));
 
         return EntityModel.of(post,
-                linkTo(methodOn(PostConroller.class).one(id)).withSelfRel());
+                linkTo(methodOn(PostConroller.class).getOnePost(id)).withSelfRel(),
+                linkTo(methodOn(PostConroller.class).getAllPosts()).withRel("posts"));
     }
 
     @PutMapping(path = "/posts/{id}")

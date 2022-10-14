@@ -21,7 +21,7 @@ function AddPostForm(props) {
             body: JSON.stringify(newPost),
         });
 
-        props.fetchData();
+        props.getAllPosts();
 
         setTitle("");
         setText("");
